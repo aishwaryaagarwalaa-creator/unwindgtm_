@@ -1,0 +1,70 @@
+{
+  "resources": [
+    {
+      "id": "revops-maturity-model",
+      "type": "Whitepaper",
+      "title": "The RevOps Maturity Model for B2B SaaS",
+      "description": "A practical framework to assess where your revenue operations function stands today — and a clear roadmap to get to the next level. Covers people, process, data, and systems across five maturity stages.",
+      "tags": ["RevOps", "Strategy", "B2B SaaS"],
+      "readTime": "12 min read",
+      "date": "March 2025",
+      "gated": true,
+      "file": "#"
+    },
+    {
+      "id": "crm-audit-checklist",
+      "type": "Checklist",
+      "title": "The 50-Point CRM Audit Checklist",
+      "description": "Before you blame the CRM, audit it. This checklist walks through data hygiene, pipeline configuration, workflow logic, and adoption gaps that silently kill revenue visibility.",
+      "tags": ["CRM", "HubSpot", "Salesforce"],
+      "readTime": "8 min read",
+      "date": "February 2025",
+      "gated": true,
+      "file": "#"
+    },
+    {
+      "id": "gtm-ai-playbook",
+      "type": "Playbook",
+      "title": "Building AI-Native GTM Workflows in 2025",
+      "description": "A practical guide to layering AI tools (Clay, n8n, HeyReach, LLMs) into your GTM motion without breaking your existing processes. Includes real workflow templates and tool stack recommendations.",
+      "tags": ["AI", "GTM Engineering", "Automation"],
+      "readTime": "15 min read",
+      "date": "January 2025",
+      "gated": true,
+      "file": "#"
+    },
+    {
+      "id": "lead-to-cash-guide",
+      "type": "Guide",
+      "title": "The Lead-to-Cash Diagnostic Guide",
+      "description": "Map every handoff in your revenue process — from first touch to closed invoice — and identify exactly where deals are leaking. Includes a diagnostic template you can run in one afternoon.",
+      "tags": ["Lead-to-Cash", "RevOps", "Pipeline"],
+      "readTime": "10 min read",
+      "date": "December 2024",
+      "gated": true,
+      "file": "#"
+    },
+    {
+      "id": "cs-expansion-playbook",
+      "type": "Playbook",
+      "title": "The Customer Success Expansion Playbook",
+      "description": "How to systematically identify, trigger, and close expansion revenue within your existing customer base. Covers health scoring, QBR design, and CS-to-Sales handoff frameworks.",
+      "tags": ["Customer Success", "Expansion", "Retention"],
+      "readTime": "11 min read",
+      "date": "November 2024",
+      "gated": true,
+      "file": "#"
+    },
+    {
+      "id": "fpa-for-gtm",
+      "type": "Blog",
+      "title": "Why Your GTM Team Needs FP&A Thinking",
+      "description": "Most GTM leaders treat finance as a reporting function. The best ones use FP&A as a planning weapon. This post covers how to bring financial rigour into your go-to-market without slowing down execution.",
+      "tags": ["FP&A", "GTM Strategy", "Finance"],
+      "readTime": "6 min read",
+      "date": "October 2024",
+      "gated": false,
+      "file": "#"
+    }
+  ]
+}
