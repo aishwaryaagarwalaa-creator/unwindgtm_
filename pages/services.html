@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Unwind GTM</title>
+  <meta name="description" content="Revenue Operations services: Fractional RevOps, FP&A, CRM, Marketing Ops, Sales Ops, Customer Success, and Data Analytics.">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .services-list { display: flex; flex-direction: column; gap: 0; }
+    .service-entry {
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: 80px 1fr 320px;
+      gap: var(--space-md);
+      align-items: start;
+      transition: all var(--transition);
+      scroll-margin-top: calc(var(--nav-height) + 2rem);
+    }
+    .service-entry:first-child { padding-top: 0; }
+    .service-entry:last-child { border-bottom: none; }
+    .service-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--color-text-subtle);
+      padding-top: 0.5rem;
+    }
+    .service-main {}
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+    .service-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .service-tagline {
+      font-size: 1rem;
+      color: var(--color-primary);
+      font-style: italic;
+      margin-bottom: var(--space-sm);
+    }
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      max-width: 620px;
+    }
+    .service-outcomes {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    .service-outcomes-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+    .service-outcomes ul { list-style: none; }
+    .service-outcomes li {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .service-outcomes li:last-child { border-bottom: none; }
+    .service-outcomes li::before {
+      content: '→';
+      color: var(--color-primary);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .services-cta {
+      margin-top: var(--space-lg);
+      text-align: center;
+      padding: var(--space-lg);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+    }
+    @media (max-width: 900px) {
+      .service-entry { grid-template-columns: 1fr; }
+      .service-number { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+      <div class="hero section">
+        <p class="hero-eyebrow">// Services</p>
+        <h1 class="hero-title">Everything your<br><em>revenue engine</em> needs.</h1>
+        <p class="hero-subtitle">From fractional RevOps leadership to full-stack GTM implementation, we cover every layer of the revenue function — with the same rigour and ownership as a full-time hire.</p>
+      </div>
+
+      <div class="section">
+        <div class="services-list" id="servicesList">
+          <p style="color:var(--color-text-muted)">Loading services...</p>
+        </div>
+
+        <div class="services-cta">
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:0.75rem">Not sure which service fits?</h3>
+          <p style="color:var(--color-text-muted);margin-bottom:var(--space-sm)">Book a free GTM audit with one of our founders. We'll help you diagnose the problem before we prescribe a solution.</p>
+          <a href="consultation.html" class="btn btn-primary">Book a Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/nav.js"></script>
+  <script>
+    fetch('../data/services.json').then(r=>r.json()).then(data=>{
+      document.getElementById('servicesList').innerHTML = data.services.map((s, i) => `
+        <div class="service-entry fade-in" id="${s.id}">
+          <div class="service-number">0${i+1}</div>
+          <div class="service-main">
+            <div class="service-icon">${s.icon}</div>
+            <h2 class="service-title">${s.title}</h2>
+            <p class="service-tagline">${s.tagline}</p>
+            <p class="service-desc">${s.description}</p>
+          </div>
+          <div class="service-outcomes">
+            <div class="service-outcomes-label">Key Outcomes</div>
+            <ul>${s.outcomes.map(o=>`<li>${o}</li>`).join('')}</ul>
+          </div>
+        </div>
+      `).join('');
+
+      // Scroll to anchor if in URL
+      if (window.location.hash) {
+        setTimeout(() => {
+          const el = document.querySelector(window.location.hash);
+          if (el) el.scrollIntoView({behavior:'smooth'});
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>

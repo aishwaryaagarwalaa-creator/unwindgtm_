@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unwind GTM — Revenue Operations & GTM Strategy</title>
+  <meta name="description" content="Unwind GTM helps B2B tech companies untangle their go-to-market, build clean revenue infrastructure, and scale operations that actually work.">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    .home-hero {
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      padding: var(--space-xl) var(--space-md);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .home-hero-content { max-width: 740px; }
+    .hero-cta-row {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .stat-strip {
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-md) var(--space-md);
+    }
+    .stat-strip-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-md);
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-sm);
+    }
+    .service-card-mini {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: all var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+    .service-card-mini:hover {
+      border-color: rgba(200,169,110,0.3);
+      background: rgba(200,169,110,0.04);
+    }
+    .service-icon-mini { font-size: 1.5rem; line-height: 1; margin-top: 2px; flex-shrink: 0; }
+    .service-name-mini { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .service-desc-mini { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.5; }
+    .founders-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-sm);
+    }
+    .founder-card-mini {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      transition: all var(--transition);
+    }
+    .founder-card-mini:hover { border-color: var(--color-border-hover); }
+    .founder-avatar-mini {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary-dim), var(--color-accent));
+      margin-bottom: 1rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--color-bg);
+    }
+    .founder-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
+    .founder-name-mini { font-weight: 600; font-size: 1rem; margin-bottom: 0.15rem; }
+    .founder-role-mini {
+      font-size: 0.75rem;
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .founder-excerpt { font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.6; }
+    .cta-band {
+      background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(78,205,196,0.05));
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: 12px;
+      padding: var(--space-lg);
+      text-align: center;
+      margin: var(--space-lg) var(--space-md);
+    }
+    .cta-band-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: var(--space-sm);
+    }
+    .cta-band-sub { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+      <div class="home-hero fade-in">
+        <div class="home-hero-content">
+          <p class="hero-eyebrow">// Revenue Operations & GTM Strategy</p>
+          <h1 class="hero-title">Unwind your<br><em>go-to-market.</em><br>Build what scales.</h1>
+          <p class="hero-subtitle">We help B2B tech companies untangle fractured GTM infrastructure, build clean revenue systems, and create operations that compound over time — not just survive the quarter.</p>
+          <div class="hero-cta-row">
+            <a href="pages/consultation.html" class="btn btn-primary">Book a Free Call</a>
+            <a href="pages/services.html" class="btn btn-ghost">See Our Services</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat-strip-inner">
+          <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Co-Founders</div></div>
+          <div class="stat-item"><div class="stat-number">30+</div><div class="stat-label">Years Combined Experience</div></div>
+          <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">Service Lines</div></div>
+          <div class="stat-item"><div class="stat-number">B2B</div><div class="stat-label">SaaS & Tech Focus</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Revenue Operations, end-to-end.</h2>
+        <div class="services-grid" id="servicesGrid"><p style="color:var(--color-text-muted)">Loading services...</p></div>
+        <div style="margin-top: var(--space-md); text-align: center;">
+          <a href="pages/services.html" class="btn btn-outline">View All Services</a>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="section">
+        <p class="section-label">The Team</p>
+        <h2 class="section-title">Operators, not advisors.</h2>
+        <div class="founders-strip" id="foundersStrip"><p style="color:var(--color-text-muted)">Loading founders...</p></div>
+        <div style="margin-top: var(--space-md); text-align: center;">
+          <a href="pages/about.html" class="btn btn-outline">Meet the Founders</a>
+        </div>
+      </div>
+
+      <div class="cta-band">
+        <h2 class="cta-band-title">Ready to unwind your GTM?</h2>
+        <p class="cta-band-sub">Book a free consultation with one of our founders. No pitch decks. Just honest conversation about your biggest GTM challenges.</p>
+        <a href="pages/consultation.html" class="btn btn-primary">Schedule a Call →</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/nav-root.js"></script>
+  <script>
+    fetch('data/services.json').then(r=>r.json()).then(data=>{
+      document.getElementById('servicesGrid').innerHTML = data.services.map(s=>`
+        <a href="pages/services.html#${s.id}" class="service-card-mini">
+          <div class="service-icon-mini">${s.icon}</div>
+          <div><div class="service-name-mini">${s.title}</div><div class="service-desc-mini">${s.tagline}</div></div>
+        </a>`).join('');
+    });
+    fetch('data/founders.json').then(r=>r.json()).then(data=>{
+      document.getElementById('foundersStrip').innerHTML = data.founders.map(f=>`
+        <div class="founder-card-mini">
+          <div class="founder-avatar-mini"><img src="${f.image}" alt="${f.name}" onerror="this.parentElement.textContent='${f.name[0]}'"></div>
+          <div class="founder-name-mini">${f.name}</div>
+          <div class="founder-role-mini">${f.role}</div>
+          <div class="founder-excerpt">${f.bio.substring(0,140)}...</div>
+        </div>`).join('');
+    });
+  </script>
+</body>
+</html>

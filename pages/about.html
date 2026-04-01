@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Unwind GTM</title>
+  <meta name="description" content="Meet the founders of Unwind GTM — three operators with deep experience in Revenue Operations, Sales, Marketing, and GTM strategy.">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .founder-section {
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .founder-section:last-of-type { border-bottom: none; }
+    .founder-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .founder-layout.reverse { direction: rtl; }
+    .founder-layout.reverse > * { direction: ltr; }
+    .founder-photo-wrap {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+    }
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-2) 100%);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .founder-photo-placeholder {
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--color-primary-dim);
+      opacity: 0.4;
+    }
+    .founder-photo-badge {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+    }
+    .founder-photo-badge-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .founder-photo-badge-role {
+      font-size: 0.7rem;
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+    .founder-content {}
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .founder-role {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--space-md);
+    }
+    .founder-bio {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+    .expertise-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: var(--space-md);
+    }
+    .founder-actions {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+      .founder-layout { grid-template-columns: 1fr; }
+      .founder-layout.reverse { direction: ltr; }
+      .founder-photo-wrap { position: static; }
+      .founder-photo { aspect-ratio: 1; max-width: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+      <div class="hero section">
+        <p class="hero-eyebrow">// About Us</p>
+        <h1 class="hero-title">Three operators.<br><em>One mission.</em></h1>
+        <p class="hero-subtitle">Unwind GTM was built by revenue operators who've been in the trenches — building GTM functions from scratch, fixing broken systems, and delivering outcomes at scale. We don't advise from the sidelines. We build alongside you.</p>
+      </div>
+
+      <!-- FOUNDERS — loaded from founders.json -->
+      <div class="section" id="foundersContainer">
+        <p style="color:var(--color-text-muted)">Loading founder profiles...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/nav.js"></script>
+  <script>
+    const CONSULT_LINKS = {
+      debasish: 'consult-debasish.html',
+      vaibhav:  'consult-vaibhav.html',
+      aishwarya:'consult-aishwarya.html'
+    };
+
+    fetch('../data/founders.json').then(r=>r.json()).then(data=>{
+      const container = document.getElementById('foundersContainer');
+      container.innerHTML = data.founders.map((f, i) => `
+        <div class="founder-section fade-in">
+          <div class="founder-layout ${i%2===1 ? 'reverse' : ''}">
+            <div class="founder-photo-wrap">
+              <div class="founder-photo">
+                <img src="../${f.image}" alt="${f.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="founder-photo-placeholder" style="display:none">${f.name[0]}</div>
+                <div class="founder-photo-badge">
+                  <div class="founder-photo-badge-name">${f.name}</div>
+                  <div class="founder-photo-badge-role">${f.role} · Unwind GTM</div>
+                </div>
+              </div>
+              ${f.linkedin !== '#' ? `<a href="${f.linkedin}" target="_blank" class="btn btn-ghost" style="width:100%;margin-top:0.75rem;justify-content:center">LinkedIn ↗</a>` : ''}
+            </div>
+            <div class="founder-content">
+              <h2 class="founder-name">${f.name}</h2>
+              <div class="founder-role">${f.role}</div>
+              <p class="founder-bio">${f.bio}</p>
+              <div class="expertise-grid">
+                ${f.expertise.map(e => `<span class="tag">${e}</span>`).join('')}
+              </div>
+              <div class="founder-actions">
+                <a href="${CONSULT_LINKS[f.id]}" class="btn btn-primary">Consult with ${f.name} →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

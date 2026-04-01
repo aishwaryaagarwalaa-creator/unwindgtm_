@@ -1,0 +1,60 @@
+{
+  "services": [
+    {
+      "id": "fractional-revops",
+      "title": "Fractional RevOps",
+      "icon": "◈",
+      "tagline": "Revenue Operations leadership without the full-time overhead",
+      "description": "Get seasoned RevOps leadership embedded into your business on a fractional basis. We architect your revenue infrastructure, align GTM teams, and drive the systems thinking that turns pipeline into predictable revenue — without the cost of a full-time hire.",
+      "outcomes": ["Full-funnel visibility from lead to closed-won", "Cross-functional GTM alignment", "Scalable revenue infrastructure", "Data-driven decision frameworks"]
+    },
+    {
+      "id": "fpa",
+      "title": "FP&A",
+      "icon": "◉",
+      "tagline": "Financial Planning & Analysis that speaks GTM",
+      "description": "We bridge the gap between finance and go-to-market. Our FP&A practice brings rigour to revenue forecasting, headcount planning, and unit economics — giving your leadership team the financial clarity to make bold, confident decisions.",
+      "outcomes": ["Revenue forecasting models", "GTM headcount planning", "Unit economics analysis", "Board-ready financial narratives"]
+    },
+    {
+      "id": "crm",
+      "title": "CRM Implementation & Optimisation",
+      "icon": "◎",
+      "tagline": "CRM that actually works the way your team does",
+      "description": "We design, implement, and optimise CRM systems that reflect your real sales motion — not a generic template. From HubSpot to Salesforce, we build clean data architecture, automate the right workflows, and train your team to actually use what we build.",
+      "outcomes": ["Clean, scalable CRM architecture", "Workflow automation", "Data hygiene frameworks", "Team adoption & enablement"]
+    },
+    {
+      "id": "marketing-ops",
+      "title": "Marketing Operations",
+      "icon": "◐",
+      "tagline": "Turn your marketing stack into a pipeline machine",
+      "description": "We own the full lifecycle of your marketing operations — from lead capture and nurture architecture to attribution modelling and campaign execution. We connect your tools, clean your data, and give you the visibility to know what's actually driving pipeline.",
+      "outcomes": ["End-to-end lifecycle orchestration", "Attribution & campaign analytics", "Marketing automation buildout", "Lead scoring & routing logic"]
+    },
+    {
+      "id": "sales-ops",
+      "title": "Sales Operations & Strategy",
+      "icon": "◑",
+      "tagline": "The operational backbone of a high-performing sales team",
+      "description": "We build the systems, processes, and strategy that let your sales team focus on selling. From territory design and quota setting to pipeline reviews and comp structure, we create the operational foundation for consistent, scalable revenue growth.",
+      "outcomes": ["Territory & quota design", "Pipeline governance frameworks", "Sales process documentation", "Compensation structure design"]
+    },
+    {
+      "id": "customer-success",
+      "title": "Customer Success & Professional Services",
+      "icon": "◒",
+      "tagline": "Retention and expansion built into every touchpoint",
+      "description": "We design Customer Success motions that protect and grow revenue post-sale. From onboarding playbooks and health scoring to QBR frameworks and expansion triggers, we build the CS infrastructure that turns customers into advocates.",
+      "outcomes": ["Onboarding & implementation frameworks", "Health scoring models", "Expansion playbooks", "CS–Sales handoff design"]
+    },
+    {
+      "id": "data-analytics",
+      "title": "Data Analytics",
+      "icon": "◓",
+      "tagline": "From raw data to revenue decisions",
+      "description": "We turn your GTM data into a competitive advantage. We build dashboards, define the metrics that matter, and create the analytical infrastructure that gives every GTM leader — from SDR to CRO — the insights they need to move fast and win.",
+      "outcomes": ["GTM dashboards & reporting", "KPI frameworks by function", "Data warehouse integration", "Funnel analytics & attribution"]
+    }
+  ]
+}

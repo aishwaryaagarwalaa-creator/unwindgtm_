@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultation — Unwind GTM</title>
+  <meta name="description" content="Book a GTM consultation with the founders of Unwind GTM. Free initial call. No pitch decks.">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .consult-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .consult-type-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: var(--space-md);
+      transition: all var(--transition);
+    }
+    .consult-type-card:hover { border-color: rgba(200,169,110,0.3); }
+    .consult-type-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .consult-type-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .consult-type-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+    .founders-consult-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-sm);
+    }
+    .founder-consult-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: var(--space-md);
+      transition: all var(--transition);
+    }
+    .founder-consult-card:hover { border-color: rgba(200,169,110,0.3); }
+    .founder-consult-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: var(--space-sm);
+    }
+    .founder-avatar-consult {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(200,169,110,0.3), rgba(78,205,196,0.2));
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+    .founder-avatar-consult img { width:100%;height:100%;object-fit:cover; }
+    .founder-consult-name { font-weight: 600; font-size: 1.1rem; }
+    .founder-consult-role {
+      font-size: 0.72rem;
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+    .founder-consult-bio {
+      font-size: 0.84rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin-bottom: var(--space-sm);
+    }
+    .founder-expertise-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: var(--space-sm);
+    }
+    @media (max-width: 640px) {
+      .consult-types { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+      <div class="hero section">
+        <p class="hero-eyebrow">// Consultation</p>
+        <h1 class="hero-title">Let's talk about<br>your <em>GTM.</em></h1>
+        <p class="hero-subtitle">First conversations are always free. We'll spend 30 minutes understanding your challenges — and tell you honestly whether we're the right fit.</p>
+      </div>
+
+      <div class="section">
+        <p class="section-label">Consultation Types</p>
+        <div class="consult-types">
+          <div class="consult-type-card">
+            <div class="consult-type-label">// 30 min · Free</div>
+            <div class="consult-type-title">GTM Audit Call</div>
+            <div class="consult-type-desc">An open conversation about your go-to-market. We'll diagnose the core problems and give you one or two things to act on immediately — even if you don't work with us.</div>
+          </div>
+          <div class="consult-type-card">
+            <div class="consult-type-label">// 60 min · Paid</div>
+            <div class="consult-type-title">Strategy Deep-Dive</div>
+            <div class="consult-type-desc">A structured session focused on a specific challenge: RevOps architecture, CRM strategy, pipeline health, CS motion design, or GTM planning. Comes with a written summary.</div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <p class="section-label">Book a Call</p>
+        <h2 class="section-title">Choose your founder.</h2>
+        <p style="color:var(--color-text-muted);margin-bottom:var(--space-md);max-width:560px">Pick the founder whose expertise is most relevant to your challenge — or just pick whoever's schedule works.</p>
+
+        <div class="founders-consult-grid" id="foundersConsultGrid">
+          <p style="color:var(--color-text-muted)">Loading...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/nav.js"></script>
+  <script>
+    const CONSULT_PAGES = {
+      debasish: 'consult-debasish.html',
+      vaibhav:  'consult-vaibhav.html',
+      aishwarya:'consult-aishwarya.html'
+    };
+
+    fetch('../data/founders.json').then(r=>r.json()).then(data=>{
+      document.getElementById('foundersConsultGrid').innerHTML = data.founders.map(f=>`
+        <div class="founder-consult-card fade-in">
+          <div class="founder-consult-top">
+            <div class="founder-avatar-consult">
+              <img src="../${f.image}" alt="${f.name}" onerror="this.parentElement.textContent='${f.name[0]}'">
+            </div>
+            <div>
+              <div class="founder-consult-name">${f.name}</div>
+              <div class="founder-consult-role">${f.role}</div>
+            </div>
+          </div>
+          <p class="founder-consult-bio">${f.bio.substring(0,200)}...</p>
+          <div class="founder-expertise-mini">
+            ${f.expertise.slice(0,3).map(e=>`<span class="tag">${e}</span>`).join('')}
+          </div>
+          <a href="${CONSULT_PAGES[f.id]}" class="btn btn-primary" style="width:100%;justify-content:center">
+            Book with ${f.name} →
+          </a>
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>
