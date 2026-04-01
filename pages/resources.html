@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs & Resources — Unwind GTM</title>
+  <meta name="description" content="Free GTM resources, whitepapers, playbooks and blogs from the Unwind GTM team.">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    /* ===== FILTER BAR ===== */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+    }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 3px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: rgba(200,169,110,0.07);
+    }
+
+    /* ===== RESOURCES GRID ===== */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-sm);
+    }
+    .resource-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .resource-card:hover {
+      border-color: rgba(200,169,110,0.3);
+      transform: translateY(-2px);
+    }
+    .resource-card-top {
+      padding: 1.5rem 1.5rem 1rem;
+      flex: 1;
+    }
+    .resource-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+    .resource-type {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      background: rgba(200,169,110,0.1);
+      border: 1px solid rgba(200,169,110,0.2);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+    }
+    .resource-date {
+      font-size: 0.75rem;
+      color: var(--color-text-subtle);
+      font-family: var(--font-mono);
+    }
+    .resource-gated-badge {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: var(--color-text-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .resource-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+    }
+    .resource-desc {
+      font-size: 0.84rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .resource-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .resource-card-bottom {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .resource-read-time {
+      font-size: 0.75rem;
+      color: var(--color-text-subtle);
+      font-family: var(--font-mono);
+    }
+    .resource-access-btn {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition);
+    }
+    .resource-access-btn.free {
+      background: rgba(78,205,196,0.1);
+      color: var(--color-accent);
+      border: 1px solid rgba(78,205,196,0.3);
+    }
+    .resource-access-btn.free:hover {
+      background: rgba(78,205,196,0.2);
+    }
+    .resource-access-btn.gated {
+      background: var(--color-primary);
+      color: var(--color-bg);
+    }
+    .resource-access-btn.gated:hover { background: #d4b87a; }
+
+    /* ===== EMAIL GATE MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-sm);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal {
+      background: var(--color-bg-card);
+      border: 1px solid rgba(200,169,110,0.3);
+      border-radius: 12px;
+      padding: var(--space-md);
+      max-width: 480px;
+      width: 100%;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .modal-subtitle {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-sm);
+      line-height: 1.6;
+    }
+    .modal-resource-title {
+      background: var(--color-bg-2);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      color: var(--color-primary);
+    }
+    .modal-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .modal-input {
+      background: var(--color-bg-2);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--color-text);
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+    .modal-input:focus { border-color: rgba(200,169,110,0.5); }
+    .modal-input::placeholder { color: var(--color-text-subtle); }
+    .modal-submit {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      border: none;
+      border-radius: 6px;
+      padding: 0.85rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      width: 100%;
+    }
+    .modal-submit:hover { background: #d4b87a; }
+    .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .modal-close {
+      float: right;
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+    .modal-privacy {
+      font-size: 0.72rem;
+      color: var(--color-text-subtle);
+      text-align: center;
+      font-family: var(--font-mono);
+      margin-top: 0.25rem;
+    }
+    .modal-success {
+      text-align: center;
+      padding: var(--space-sm) 0;
+      display: none;
+    }
+    .modal-success-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+    .modal-success-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .modal-success-text { font-size: 0.85rem; color: var(--color-text-muted); }
+
+    /* ===== ALREADY UNLOCKED STATE ===== */
+    .resource-card.unlocked { border-color: rgba(78,205,196,0.2); }
+    .resource-card.unlocked .resource-access-btn {
+      background: rgba(78,205,196,0.1);
+      color: var(--color-accent);
+      border: 1px solid rgba(78,205,196,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+
+      <!-- HERO -->
+      <div class="hero section">
+        <p class="hero-eyebrow">// Blogs & Resources</p>
+        <h1 class="hero-title">GTM thinking,<br><em>made practical.</em></h1>
+        <p class="hero-subtitle">Playbooks, whitepapers, checklists, and essays from the Unwind GTM team — built for operators who want to move fast and build right.</p>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="section">
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="Whitepaper">Whitepapers</button>
+          <button class="filter-btn" data-filter="Playbook">Playbooks</button>
+          <button class="filter-btn" data-filter="Guide">Guides</button>
+          <button class="filter-btn" data-filter="Checklist">Checklists</button>
+          <button class="filter-btn" data-filter="Blog">Blog</button>
+        </div>
+
+        <div class="resources-grid" id="resourcesGrid">
+          <p style="color:var(--color-text-muted)">Loading resources...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMAIL GATE MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-icon">📄</div>
+      <h2 class="modal-title">Get free access</h2>
+      <p class="modal-subtitle">Enter your work email to instantly unlock this resource. No spam — just GTM insights when we publish something worth reading.</p>
+      <div class="modal-resource-title" id="modalResourceTitle"></div>
+
+      <div class="modal-form" id="modalForm">
+        <input type="text" class="modal-input" id="modalName" placeholder="Your name" required>
+        <input type="email" class="modal-input" id="modalEmail" placeholder="Work email address" required>
+        <input type="text" class="modal-input" id="modalCompany" placeholder="Company (optional)">
+        <button class="modal-submit" id="modalSubmit">Unlock Resource →</button>
+        <p class="modal-privacy">🔒 No spam. Unsubscribe anytime.</p>
+      </div>
+
+      <div class="modal-success" id="modalSuccess">
+        <div class="modal-success-icon">✅</div>
+        <div class="modal-success-title">You're in!</div>
+        <p class="modal-success-text">Check your email — we've sent you the resource link.<br><br>
+        <span style="color:var(--color-text-subtle);font-size:0.78rem;font-family:var(--font-mono)">
+          In the meantime, add the resource link below to your reading list.
+        </span></p>
+        <a href="#" id="modalResourceLink" class="btn btn-primary" style="margin-top:1rem;display:inline-flex">
+          View Resource →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/nav.js"></script>
+  <script>
+    var resources = [];
+    var currentResourceId = null;
+    var unlockedEmail = localStorage.getItem('unwindgtm_email') || null;
+
+    // Load resources
+    fetch('../data/resources.json').then(function(r){return r.json();}).then(function(data){
+      resources = data.resources;
+      renderGrid('all');
+    });
+
+    function renderGrid(filter) {
+      var grid = document.getElementById('resourcesGrid');
+      var filtered = filter === 'all'
+        ? resources
+        : resources.filter(function(r){ return r.type === filter; });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p style="color:var(--color-text-muted)">No resources in this category yet — check back soon.</p>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(function(r) {
+        var isUnlocked = !r.gated || unlockedEmail;
+        var btnClass = isUnlocked ? 'free' : 'gated';
+        var btnText = r.gated
+          ? (isUnlocked ? '✓ Unlocked — Read Now' : 'Unlock Free →')
+          : 'Read Free →';
+        var cardClass = isUnlocked && r.gated ? 'resource-card unlocked' : 'resource-card';
+
+        return '<div class="' + cardClass + '" data-type="' + r.type + '">' +
+          '<div class="resource-card-top">' +
+            '<div class="resource-meta">' +
+              '<span class="resource-type">' + r.type + '</span>' +
+              '<span class="resource-date">' + r.date + '</span>' +
+              (r.gated ? '<span class="resource-gated-badge">🔒 Gated</span>' : '<span class="resource-gated-badge" style="color:var(--color-accent)">✓ Free</span>') +
+            '</div>' +
+            '<div class="resource-title">' + r.title + '</div>' +
+            '<p class="resource-desc">' + r.description + '</p>' +
+            '<div class="resource-tags">' +
+              r.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('') +
+            '</div>' +
+          '</div>' +
+          '<div class="resource-card-bottom">' +
+            '<span class="resource-read-time">' + r.readTime + '</span>' +
+            '<button class="resource-access-btn ' + btnClass + '" onclick="handleAccess(\'' + r.id + '\')">' + btnText + '</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    function handleAccess(resourceId) {
+      var resource = resources.find(function(r){ return r.id === resourceId; });
+      if (!resource) return;
+
+      if (!resource.gated || unlockedEmail) {
+        // Direct access
+        if (resource.file && resource.file !== '#') {
+          window.open(resource.file, '_blank');
+        } else {
+          alert('Resource coming soon! Check back shortly.');
+        }
+        return;
+      }
+
+      // Show gate modal
+      currentResourceId = resourceId;
+      document.getElementById('modalResourceTitle').textContent = resource.title;
+      document.getElementById('modalOverlay').classList.add('open');
+      document.getElementById('modalForm').style.display = 'flex';
+      document.getElementById('modalSuccess').style.display = 'none';
+      document.getElementById('modalSubmit').disabled = false;
+      document.getElementById('modalSubmit').textContent = 'Unlock Resource →';
+    }
+
+    // Modal close
+    document.getElementById('modalClose').addEventListener('click', function(){
+      document.getElementById('modalOverlay').classList.remove('open');
+    });
+    document.getElementById('modalOverlay').addEventListener('click', function(e){
+      if (e.target === this) this.classList.remove('open');
+    });
+
+    // Form submit
+    document.getElementById('modalSubmit').addEventListener('click', function(){
+      var name = document.getElementById('modalName').value.trim();
+      var email = document.getElementById('modalEmail').value.trim();
+
+      if (!name) { document.getElementById('modalName').focus(); return; }
+      if (!email || !email.includes('@')) { document.getElementById('modalEmail').focus(); return; }
+
+      var btn = document.getElementById('modalSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      // ================================================================
+      // EMAIL CAPTURE — Replace this section with your actual integration
+      // Options:
+      //   A) HubSpot Form API (recommended — you already use HubSpot)
+      //   B) Zapier Webhook
+      //   C) Mailchimp API
+      //   D) Google Sheets via Make.com
+      //
+      // Example HubSpot integration:
+      // fetch('https://api.hsforms.com/submissions/v3/integration/submit/YOUR_PORTAL_ID/YOUR_FORM_ID', {
+      //   method: 'POST',
+      //   headers: {'Content-Type': 'application/json'},
+      //   body: JSON.stringify({
+      //     fields: [
+      //       {name: 'firstname', value: name},
+      //       {name: 'email', value: email},
+      //       {name: 'company', value: document.getElementById('modalCompany').value}
+      //     ],
+      //     context: {pageUri: window.location.href, pageName: document.title}
+      //   })
+      // });
+      // ================================================================
+
+      // Save email locally so user doesn't have to re-enter on same device
+      localStorage.setItem('unwindgtm_email', email);
+      unlockedEmail = email;
+
+      // Simulate submission (replace with real API call above)
+      setTimeout(function(){
+        var resource = resources.find(function(r){ return r.id === currentResourceId; });
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalSuccess').style.display = 'block';
+        if (resource && resource.file !== '#') {
+          document.getElementById('modalResourceLink').href = resource.file;
+        } else {
+          document.getElementById('modalResourceLink').style.display = 'none';
+        }
+        // Re-render grid to show unlocked state
+        renderGrid(document.querySelector('.filter-btn.active').dataset.filter);
+      }, 1000);
+    });
+
+    // Filter buttons
+    document.getElementById('filterBar').addEventListener('click', function(e){
+      if (!e.target.classList.contains('filter-btn')) return;
+      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      e.target.classList.add('active');
+      renderGrid(e.target.dataset.filter);
+    });
+  </script>
+</body>
+</html>
