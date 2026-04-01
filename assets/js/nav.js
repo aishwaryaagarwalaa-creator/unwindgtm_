@@ -17,6 +17,7 @@ const NAV_HTML = `
       <li><a href="../index.html" data-page="index.html">Home</a></li>
       <li><a href="../pages/about.html" data-page="about.html">About</a></li>
       <li><a href="../pages/services.html" data-page="services.html">Services</a></li>
+      <li><a href="../pages/resources.html" data-page="resources.html">Resources</a></li>
       <li><a href="../pages/consultation.html" data-page="consultation.html" class="nav-cta">Book a Call</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
@@ -35,6 +36,7 @@ const FOOTER_HTML = `
       <li><a href="../index.html">Home</a></li>
       <li><a href="../pages/about.html">About</a></li>
       <li><a href="../pages/services.html">Services</a></li>
+      <li><a href="../pages/resources.html">Resources</a></li>
       <li><a href="../pages/consultation.html">Consultation</a></li>
     </ul>
     <p class="footer-copy">© ${new Date().getFullYear()} Unwind GTM. All rights reserved.</p>
