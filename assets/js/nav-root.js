@@ -5,8 +5,7 @@ const NAV_HTML = `
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      Unwind GTM
-      <span>Revenue Operations</span>
+      unwindGTM
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" data-page="index.html">Home</a></li>
@@ -24,7 +23,7 @@ const NAV_HTML = `
 const FOOTER_HTML = `
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-logo">Unwind GTM</div>
+    <div class="footer-logo">unwindGTM</div>
     <p class="footer-tagline">Untangle your go-to-market. Build systems that scale.</p>
     <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
@@ -33,7 +32,7 @@ const FOOTER_HTML = `
       <li><a href="pages/resources.html">Resources</a></li>
       <li><a href="pages/consultation.html">Consultation</a></li>
     </ul>
-    <p class="footer-copy">© ${new Date().getFullYear()} Unwind GTM. All rights reserved.</p>
+    <p class="footer-copy">© ${new Date().getFullYear()} unwindGTM. All rights reserved.</p>
   </div>
 </footer>`;
 
@@ -55,8 +54,8 @@ function initPage() {
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('mainNav');
     nav.style.background = window.scrollY > 20
-      ? 'rgba(10, 10, 15, 0.97)'
-      : 'rgba(10, 10, 15, 0.85)';
+      ? 'rgba(248, 247, 244, 0.97)'
+      : 'rgba(248, 247, 244, 0.92)';
   });
 }
 
