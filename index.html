@@ -3,29 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unwind GTM — Revenue Operations & GTM Strategy</title>
-  <meta name="description" content="Unwind GTM helps B2B tech companies untangle their go-to-market, build clean revenue infrastructure, and scale operations that actually work.">
+  <title>unwindGTM — Revenue Operations & GTM Strategy</title>
+  <meta name="description" content="unwindGTM helps B2B tech companies untangle their go-to-market, build clean revenue infrastructure, and scale operations that actually work.">
   <link rel="stylesheet" href="assets/css/main.css">
   <style>
+    /* ===== HERO LAYOUT ===== */
     .home-hero {
       min-height: calc(100vh - var(--nav-height));
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: var(--space-xl) var(--space-md);
+      gap: var(--space-lg);
+      padding: var(--space-lg) var(--space-md);
       max-width: var(--max-width);
       margin: 0 auto;
     }
-    .home-hero-content { max-width: 740px; }
+    .home-hero-content {}
     .hero-cta-row {
       display: flex;
       gap: var(--space-sm);
       margin-top: var(--space-md);
       flex-wrap: wrap;
     }
+
+    /* ===== TOOLS ANIMATION ===== */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 480px;
+    }
+    .tools-orbit {
+      position: relative;
+      width: 380px;
+      height: 380px;
+    }
+    /* Centre hub */
+    .orbit-hub {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px; height: 80px;
+      background: var(--color-primary);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: #fff;
+      letter-spacing: 0.05em;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.35);
+      z-index: 10;
+      font-family: var(--font-body);
+      text-align: center;
+      line-height: 1.2;
+    }
+    /* Orbit rings */
+    .orbit-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      border-radius: 50%;
+      border: 1px dashed rgba(37,99,235,0.15);
+      transform: translate(-50%, -50%);
+    }
+    .orbit-ring-1 { width: 200px; height: 200px; }
+    .orbit-ring-2 { width: 320px; height: 320px; }
+    /* Tool nodes */
+    .tool-node {
+      position: absolute;
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .tool-node:hover {
+      transform: scale(1.15) !important;
+      border-color: var(--color-primary);
+      box-shadow: 0 8px 24px rgba(37,99,235,0.15);
+      color: var(--color-primary);
+      z-index: 20;
+    }
+    .tool-node img {
+      width: 28px; height: 28px;
+      object-fit: contain;
+    }
+    /* Orbit 1 — inner ring, 4 tools */
+    .tool-node.n1 { animation: orbit1 18s linear infinite; }
+    .tool-node.n2 { animation: orbit1 18s linear infinite; animation-delay: -4.5s; }
+    .tool-node.n3 { animation: orbit1 18s linear infinite; animation-delay: -9s; }
+    .tool-node.n4 { animation: orbit1 18s linear infinite; animation-delay: -13.5s; }
+    /* Orbit 2 — outer ring, 5 tools */
+    .tool-node.n5  { animation: orbit2 28s linear infinite; }
+    .tool-node.n6  { animation: orbit2 28s linear infinite; animation-delay: -5.6s; }
+    .tool-node.n7  { animation: orbit2 28s linear infinite; animation-delay: -11.2s; }
+    .tool-node.n8  { animation: orbit2 28s linear infinite; animation-delay: -16.8s; }
+    .tool-node.n9  { animation: orbit2 28s linear infinite; animation-delay: -22.4s; }
+
+    @keyframes orbit1 {
+      from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+    }
+    @keyframes orbit2 {
+      from { transform: rotate(0deg) translateX(160px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(160px) rotate(-360deg); }
+    }
+
+    /* Connecting lines pulse */
+    .orbit-pulse {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.12);
+      animation: pulse 2.5s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { width: 80px; height: 80px; opacity: 0.5; }
+      100% { width: 380px; height: 380px; opacity: 0; }
+    }
+
+    /* ===== STAT STRIP ===== */
     .stat-strip {
       border-top: 1px solid var(--color-border);
       border-bottom: 1px solid var(--color-border);
-      padding: var(--space-md) var(--space-md);
+      padding: var(--space-md);
+      background: var(--color-bg-card);
     }
     .stat-strip-inner {
       max-width: var(--max-width);
@@ -49,6 +167,8 @@
       letter-spacing: 0.1em;
       margin-top: 0.25rem;
     }
+
+    /* ===== SERVICES GRID ===== */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -57,7 +177,7 @@
     .service-card-mini {
       background: var(--color-bg-card);
       border: 1px solid var(--color-border);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 1.25rem;
       display: flex;
       align-items: flex-start;
@@ -65,14 +185,18 @@
       transition: all var(--transition);
       text-decoration: none;
       color: inherit;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
     .service-card-mini:hover {
-      border-color: rgba(200,169,110,0.3);
-      background: rgba(200,169,110,0.04);
+      border-color: rgba(37,99,235,0.3);
+      box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+      transform: translateY(-1px);
     }
     .service-icon-mini { font-size: 1.5rem; line-height: 1; margin-top: 2px; flex-shrink: 0; }
     .service-name-mini { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
     .service-desc-mini { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.5; }
+
+    /* ===== FOUNDERS ===== */
     .founders-strip {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -81,16 +205,19 @@
     .founder-card-mini {
       background: var(--color-bg-card);
       border: 1px solid var(--color-border);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 1.5rem;
       transition: all var(--transition);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
-    .founder-card-mini:hover { border-color: var(--color-border-hover); }
+    .founder-card-mini:hover {
+      border-color: rgba(37,99,235,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
     .founder-avatar-mini {
-      width: 56px;
-      height: 56px;
+      width: 56px; height: 56px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-primary-dim), var(--color-accent));
+      background: linear-gradient(135deg, #2563EB, #0EA5E9);
       margin-bottom: 1rem;
       overflow: hidden;
       display: flex;
@@ -98,40 +225,57 @@
       justify-content: center;
       font-family: var(--font-display);
       font-size: 1.3rem;
-      color: var(--color-bg);
+      color: #fff;
     }
     .founder-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
     .founder-name-mini { font-weight: 600; font-size: 1rem; margin-bottom: 0.15rem; }
     .founder-role-mini {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--color-primary);
-      font-family: var(--font-mono);
+      font-weight: 600;
       letter-spacing: 0.05em;
+      text-transform: uppercase;
       margin-bottom: 0.75rem;
     }
     .founder-excerpt { font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.6; }
+
+    /* ===== CTA BAND ===== */
     .cta-band {
-      background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(78,205,196,0.05));
-      border: 1px solid rgba(200,169,110,0.2);
-      border-radius: 12px;
+      background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+      border-radius: 16px;
       padding: var(--space-lg);
       text-align: center;
       margin: var(--space-lg) var(--space-md);
+      color: #fff;
     }
     .cta-band-title {
       font-family: var(--font-display);
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       margin-bottom: var(--space-sm);
+      color: #fff;
     }
-    .cta-band-sub { color: var(--color-text-muted); margin-bottom: var(--space-md); }
+    .cta-band-sub { color: rgba(255,255,255,0.8); margin-bottom: var(--space-md); }
+    .cta-band .btn-primary {
+      background: #fff;
+      color: var(--color-primary);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .cta-band .btn-primary:hover { background: #f0f0f0; }
+
+    @media (max-width: 900px) {
+      .home-hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+    }
   </style>
 </head>
 <body>
   <div class="page-wrapper">
     <div class="content-layer">
-      <div class="home-hero fade-in">
-        <div class="home-hero-content">
-          <p class="hero-eyebrow">// Revenue Operations & GTM Strategy</p>
+
+      <!-- HERO -->
+      <div class="home-hero">
+        <div class="home-hero-content fade-in">
+          <p class="hero-eyebrow">Revenue Operations & GTM Strategy</p>
           <h1 class="hero-title">Unwind your<br><em>go-to-market.</em><br>Build what scales.</h1>
           <p class="hero-subtitle">We help B2B tech companies untangle fractured GTM infrastructure, build clean revenue systems, and create operations that compound over time — not just survive the quarter.</p>
           <div class="hero-cta-row">
@@ -139,8 +283,70 @@
             <a href="pages/services.html" class="btn btn-ghost">See Our Services</a>
           </div>
         </div>
+
+        <!-- ANIMATED TOOLS VISUAL -->
+        <div class="hero-visual">
+          <div class="tools-orbit">
+            <!-- Pulse rings -->
+            <div class="orbit-pulse"></div>
+            <!-- Orbit rings -->
+            <div class="orbit-ring orbit-ring-1"></div>
+            <div class="orbit-ring orbit-ring-2"></div>
+            <!-- Hub -->
+            <div class="orbit-hub">GTM<br>Stack</div>
+
+            <!-- Inner orbit tools -->
+            <div class="tool-node n1">
+              <img src="https://www.vectorlogo.zone/logos/hubspot/hubspot-icon.svg" alt="HubSpot" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">🟠</span>
+              <span>HubSpot</span>
+            </div>
+            <div class="tool-node n2">
+              <img src="https://www.vectorlogo.zone/logos/salesforce/salesforce-icon.svg" alt="Salesforce" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">☁️</span>
+              <span>Salesforce</span>
+            </div>
+            <div class="tool-node n3">
+              <img src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg" alt="BigQuery" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">📊</span>
+              <span>BigQuery</span>
+            </div>
+            <div class="tool-node n4">
+              <img src="https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg" alt="Zapier" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">⚡</span>
+              <span>Zapier</span>
+            </div>
+
+            <!-- Outer orbit tools -->
+            <div class="tool-node n5">
+              <img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg" alt="Analytics" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">📈</span>
+              <span>Analytics</span>
+            </div>
+            <div class="tool-node n6">
+              <img src="https://www.vectorlogo.zone/logos/notion/notion-icon.svg" alt="Notion" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">📝</span>
+              <span>Notion</span>
+            </div>
+            <div class="tool-node n7">
+              <img src="https://www.vectorlogo.zone/logos/slack/slack-icon.svg" alt="Slack" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">💬</span>
+              <span>Slack</span>
+            </div>
+            <div class="tool-node n8">
+              <span style="font-size:1.2rem">🧱</span>
+              <span>Clay</span>
+            </div>
+            <div class="tool-node n9">
+              <img src="https://www.vectorlogo.zone/logos/n8nio/n8nio-icon.svg" alt="n8n" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+              <span style="display:none;font-size:1rem">🔗</span>
+              <span>n8n</span>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <!-- STAT STRIP -->
       <div class="stat-strip">
         <div class="stat-strip-inner">
           <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Co-Founders</div></div>
@@ -150,6 +356,7 @@
         </div>
       </div>
 
+      <!-- SERVICES -->
       <div class="section">
         <p class="section-label">What We Do</p>
         <h2 class="section-title">Revenue Operations, end-to-end.</h2>
@@ -161,6 +368,7 @@
 
       <hr class="section-divider">
 
+      <!-- FOUNDERS -->
       <div class="section">
         <p class="section-label">The Team</p>
         <h2 class="section-title">Operators, not advisors.</h2>
@@ -170,11 +378,13 @@
         </div>
       </div>
 
+      <!-- CTA BAND -->
       <div class="cta-band">
         <h2 class="cta-band-title">Ready to unwind your GTM?</h2>
         <p class="cta-band-sub">Book a free consultation with one of our founders. No pitch decks. Just honest conversation about your biggest GTM challenges.</p>
         <a href="pages/consultation.html" class="btn btn-primary">Schedule a Call →</a>
       </div>
+
     </div>
   </div>
 
