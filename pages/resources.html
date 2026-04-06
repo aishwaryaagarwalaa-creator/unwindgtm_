@@ -1,473 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blogs & Resources — Unwind GTM</title>
-  <meta name="description" content="Free GTM resources, whitepapers, playbooks and blogs from the Unwind GTM team.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources — unwindGTM</title>
   <link rel="stylesheet" href="../assets/css/main.css">
   <style>
-    /* ===== FILTER BAR ===== */
-    .filter-bar {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: var(--space-md);
-    }
-    .filter-btn {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border-radius: 3px;
-      border: 1px solid var(--color-border);
-      background: transparent;
-      color: var(--color-text-muted);
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-    .filter-btn:hover, .filter-btn.active {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-      background: rgba(200,169,110,0.07);
-    }
-
-    /* ===== RESOURCES GRID ===== */
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: var(--space-sm);
-    }
-    .resource-card {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: all var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-    .resource-card:hover {
-      border-color: rgba(200,169,110,0.3);
-      transform: translateY(-2px);
-    }
-    .resource-card-top {
-      padding: 1.5rem 1.5rem 1rem;
-      flex: 1;
-    }
-    .resource-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.85rem;
-    }
-    .resource-type {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      background: rgba(200,169,110,0.1);
-      border: 1px solid rgba(200,169,110,0.2);
-      padding: 0.2rem 0.5rem;
-      border-radius: 3px;
-    }
-    .resource-date {
-      font-size: 0.75rem;
-      color: var(--color-text-subtle);
-      font-family: var(--font-mono);
-    }
-    .resource-gated-badge {
-      margin-left: auto;
-      font-size: 0.7rem;
-      color: var(--color-text-subtle);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .resource-title {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.6rem;
-      line-height: 1.35;
-    }
-    .resource-desc {
-      font-size: 0.84rem;
-      color: var(--color-text-muted);
-      line-height: 1.65;
-      margin-bottom: 1rem;
-    }
-    .resource-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-    .resource-card-bottom {
-      padding: 1rem 1.5rem;
-      border-top: 1px solid var(--color-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .resource-read-time {
-      font-size: 0.75rem;
-      color: var(--color-text-subtle);
-      font-family: var(--font-mono);
-    }
-    .resource-access-btn {
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.4rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      border: none;
-      transition: all var(--transition);
-    }
-    .resource-access-btn.free {
-      background: rgba(78,205,196,0.1);
-      color: var(--color-accent);
-      border: 1px solid rgba(78,205,196,0.3);
-    }
-    .resource-access-btn.free:hover {
-      background: rgba(78,205,196,0.2);
-    }
-    .resource-access-btn.gated {
-      background: var(--color-primary);
-      color: var(--color-bg);
-    }
-    .resource-access-btn.gated:hover { background: #d4b87a; }
-
-    /* ===== EMAIL GATE MODAL ===== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--space-sm);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .modal {
-      background: var(--color-bg-card);
-      border: 1px solid rgba(200,169,110,0.3);
-      border-radius: 12px;
-      padding: var(--space-md);
-      max-width: 480px;
-      width: 100%;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-    .modal-overlay.open .modal { transform: translateY(0); }
-    .modal-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .modal-subtitle {
-      font-size: 0.88rem;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-sm);
-      line-height: 1.6;
-    }
-    .modal-resource-title {
-      background: var(--color-bg-2);
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: var(--space-sm);
-      color: var(--color-primary);
-    }
-    .modal-form { display: flex; flex-direction: column; gap: 0.75rem; }
-    .modal-input {
-      background: var(--color-bg-2);
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: var(--color-text);
-      outline: none;
-      transition: border-color var(--transition);
-      width: 100%;
-    }
-    .modal-input:focus { border-color: rgba(200,169,110,0.5); }
-    .modal-input::placeholder { color: var(--color-text-subtle); }
-    .modal-submit {
-      background: var(--color-primary);
-      color: var(--color-bg);
-      border: none;
-      border-radius: 6px;
-      padding: 0.85rem;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all var(--transition);
-      width: 100%;
-    }
-    .modal-submit:hover { background: #d4b87a; }
-    .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-    .modal-close {
-      float: right;
-      background: none;
-      border: none;
-      color: var(--color-text-muted);
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 0;
-      line-height: 1;
-    }
-    .modal-privacy {
-      font-size: 0.72rem;
-      color: var(--color-text-subtle);
-      text-align: center;
-      font-family: var(--font-mono);
-      margin-top: 0.25rem;
-    }
-    .modal-success {
-      text-align: center;
-      padding: var(--space-sm) 0;
-      display: none;
-    }
-    .modal-success-icon { font-size: 3rem; margin-bottom: 0.75rem; }
-    .modal-success-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-    .modal-success-text { font-size: 0.85rem; color: var(--color-text-muted); }
-
-    /* ===== ALREADY UNLOCKED STATE ===== */
-    .resource-card.unlocked { border-color: rgba(78,205,196,0.2); }
-    .resource-card.unlocked .resource-access-btn {
-      background: rgba(78,205,196,0.1);
-      color: var(--color-accent);
-      border: 1px solid rgba(78,205,196,0.3);
-    }
+    .resource-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+    .resource-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; transition:all var(--transition); }
+    .resource-card:hover { border-color:var(--blue); box-shadow:0 4px 20px rgba(26,86,219,0.08); transform:translateY(-2px); }
+    .resource-type { font-family:var(--font-mono); font-size:11px; color:var(--orange); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem; }
+    .resource-title { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; line-height:1.35; }
+    .resource-desc { font-size:0.85rem; color:var(--muted); line-height:1.6; flex:1; }
+    .resource-meta { font-size:0.78rem; color:var(--light-text); margin-top:0.75rem; }
+    .resource-footer { display:flex; align-items:center; justify-content:space-between; margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border); }
+    .resource-card.flagship { border-left:4px solid var(--orange); }
+    /* MODAL */
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(8px); z-index:2000; display:flex; align-items:center; justify-content:center; padding:1rem; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+    .modal-overlay.open { opacity:1; pointer-events:all; }
+    .modal { background:#fff; border-radius:16px; padding:var(--space-md); max-width:460px; width:100%; transform:translateY(20px); transition:transform 0.3s; }
+    .modal-overlay.open .modal { transform:translateY(0); }
+    .modal-close { float:right; background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--muted); }
+    .modal-input { width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:8px; font-family:var(--font-body); font-size:0.9rem; color:var(--navy); outline:none; margin-bottom:0.75rem; }
+    .modal-input:focus { border-color:var(--blue); }
+    .webinar-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .webinar-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.5rem; transition:all var(--transition); }
+    .webinar-card:hover { border-color:var(--blue); transform:translateY(-2px); }
+    .community-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:var(--space-md); max-width:480px; }
+    @media(max-width:768px){ .webinar-grid{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <div class="content-layer">
+<div class="page-wrapper"><div class="content-layer">
 
-      <!-- HERO -->
-      <div class="hero section">
-        <p class="hero-eyebrow">// Blogs & Resources</p>
-        <h1 class="hero-title">GTM thinking,<br><em>made practical.</em></h1>
-        <p class="hero-subtitle">Playbooks, whitepapers, checklists, and essays from the Unwind GTM team — built for operators who want to move fast and build right.</p>
-      </div>
+  <!-- HERO -->
+  <div class="section" style="padding-top:calc(var(--space-xl) + var(--nav-height))">
+    <span class="eyebrow">Resources</span>
+    <h1>Built by Operators.<br><em class="accent">Written for Founders.</em></h1>
+    <p class="body-lg" style="max-width:620px;margin-top:1.5rem">No fluff. No generic listicles. Just the frameworks, playbooks, and analysis we actually use — and that you can put to work in your revenue engine today.</p>
+  </div>
 
-      <!-- MAIN CONTENT -->
-      <div class="section">
-        <div class="filter-bar" id="filterBar">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="Whitepaper">Whitepapers</button>
-          <button class="filter-btn" data-filter="Playbook">Playbooks</button>
-          <button class="filter-btn" data-filter="Guide">Guides</button>
-          <button class="filter-btn" data-filter="Checklist">Checklists</button>
-          <button class="filter-btn" data-filter="Blog">Blog</button>
-        </div>
-
-        <div class="resources-grid" id="resourcesGrid">
-          <p style="color:var(--color-text-muted)">Loading resources...</p>
-        </div>
-      </div>
-
+  <!-- BLOG -->
+  <div class="section" style="padding-top:0">
+    <span class="eyebrow">The unwindGTM Blog</span>
+    <h2 style="margin-bottom:0.5rem">Frameworks and Field Notes from the Revenue Frontline</h2>
+    <p class="body-md" style="max-width:580px;margin-bottom:var(--space-md)">Regular articles written by our founding team — from the perspective of people who've actually run the functions they're writing about.</p>
+    <div class="resource-grid">
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">Why Your GTM Handoffs Are Killing Your Pipeline — And How to Fix Them in 30 Days</div><div class="resource-desc">The handoff between Marketing and Sales is where most pipeline dies. Here's how to fix it fast.</div><div class="resource-meta">By Vaibhav · Sales & Marketing Ops</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">The 9-Pillar RevOps Checklist for Mid-Market B2B SaaS in 2026</div><div class="resource-desc">A comprehensive diagnostic across every layer of your revenue engine.</div><div class="resource-meta">By Debasish · Revenue Strategy</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">You Don't Need More Leads. You Need a Better Revenue Process.</div><div class="resource-desc">The real reason your pipeline isn't converting — and it's not a demand gen problem.</div><div class="resource-meta">By Debasish · GTM Strategy</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">How to Build a Churn Prediction Model Without a Data Science Team</div><div class="resource-desc">Practical signals, playbooks, and tools that give you early warning before customers leave.</div><div class="resource-meta">By Aishwarya · CS Operations</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">Quote-to-Cash Gaps: Where $5M–$50M SaaS Companies Lose Revenue Without Knowing It</div><div class="resource-desc">The most overlooked revenue leakage points in the Q2C process.</div><div class="resource-meta">By Aishwarya · Finance & RevOps</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">AI in RevOps: 5 Use Cases That Actually Move the Needle (and 3 That Don't)</div><div class="resource-desc">Honest assessment of what AI can and can't do for your revenue operations today.</div><div class="resource-meta">By Vaibhav · AI & Automation</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">What a Broken Sales-CS Handoff Really Costs You (With the Math)</div><div class="resource-desc">We ran the numbers. The revenue impact of a poor handoff process is bigger than most leaders realise.</div><div class="resource-meta">By Aishwarya & Vaibhav</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
+      <div class="resource-card"><div class="resource-type">Blog · Coming Soon</div><div class="resource-title">The Fractional RevOps Playbook: How to Get VP-Level Impact Without the Hire</div><div class="resource-desc">When fractional makes sense, what to look for, and how to structure the engagement.</div><div class="resource-meta">By Debasish · RevOps Leadership</div><div class="resource-footer"><span class="caption">Coming Soon</span><span class="btn btn-outline-blue" style="padding:6px 14px;font-size:0.78rem;cursor:default;opacity:0.5">Read →</span></div></div>
     </div>
   </div>
 
-  <!-- EMAIL GATE MODAL -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <button class="modal-close" id="modalClose">✕</button>
-      <div class="modal-icon">📄</div>
-      <h2 class="modal-title">Get free access</h2>
-      <p class="modal-subtitle">Enter your work email to instantly unlock this resource. No spam — just GTM insights when we publish something worth reading.</p>
-      <div class="modal-resource-title" id="modalResourceTitle"></div>
-
-      <div class="modal-form" id="modalForm">
-        <input type="text" class="modal-input" id="modalName" placeholder="Your name" required>
-        <input type="email" class="modal-input" id="modalEmail" placeholder="Work email address" required>
-        <input type="text" class="modal-input" id="modalCompany" placeholder="Company (optional)">
-        <button class="modal-submit" id="modalSubmit">Unlock Resource →</button>
-        <p class="modal-privacy">🔒 No spam. Unsubscribe anytime.</p>
-      </div>
-
-      <div class="modal-success" id="modalSuccess">
-        <div class="modal-success-icon">✅</div>
-        <div class="modal-success-title">You're in!</div>
-        <p class="modal-success-text">Check your email — we've sent you the resource link.<br><br>
-        <span style="color:var(--color-text-subtle);font-size:0.78rem;font-family:var(--font-mono)">
-          In the meantime, add the resource link below to your reading list.
-        </span></p>
-        <a href="#" id="modalResourceLink" class="btn btn-primary" style="margin-top:1rem;display:inline-flex">
-          View Resource →
-        </a>
+  <!-- DOWNLOADABLES -->
+  <div style="background:var(--bg-light);padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow">Free Downloadables</span>
+      <h2 style="margin-bottom:0.5rem">Templates, Frameworks & Scorecards</h2>
+      <p class="body-md" style="max-width:580px;margin-bottom:var(--space-md)">Downloads that solve a specific, named problem. Built to deliver value before you ever talk to us.</p>
+      <div class="resource-grid">
+        <div class="resource-card flagship"><div class="resource-type" style="color:var(--orange)">🏆 Flagship Resource · Free Download</div><div class="resource-title">The unwindGTM Revenue Engine Scorecard</div><div class="resource-desc">Rate yourself across all 9 RevOps pillars. 10 minutes. Understand exactly where your revenue engine is strong and where it's leaking.</div><div class="resource-footer"><span class="caption">PDF / Interactive</span><button class="btn btn-orange" style="padding:6px 16px;font-size:0.8rem" onclick="openModal('Revenue Engine Scorecard')">Download Free →</button></div></div>
+        <div class="resource-card"><div class="resource-type">Template · Free Download</div><div class="resource-title">SaaS GTM Maturity Assessment Template</div><div class="resource-desc">5-level self-evaluation for Marketing → CS alignment. Identify your maturity stage and the next 3 priorities.</div><div class="resource-footer"><span class="caption">Excel / Google Sheet</span><button class="btn btn-outline-blue" style="padding:6px 16px;font-size:0.8rem" onclick="openModal('GTM Maturity Assessment')">Download Free →</button></div></div>
+        <div class="resource-card"><div class="resource-type">Checklist · Free Download</div><div class="resource-title">The RevOps Health Check Checklist</div><div class="resource-desc">50-point audit of process, data, tools, and enablement gaps. Run it in an afternoon.</div><div class="resource-footer"><span class="caption">PDF</span><button class="btn btn-outline-blue" style="padding:6px 16px;font-size:0.8rem" onclick="openModal('RevOps Health Check Checklist')">Download Free →</button></div></div>
+        <div class="resource-card"><div class="resource-type">Template · Free Download</div><div class="resource-title">Quote-to-Cash Gap Analysis Template</div><div class="resource-desc">Map your Q2C flow and identify exactly where revenue is leaking before it hits the bank.</div><div class="resource-footer"><span class="caption">Google Sheet</span><button class="btn btn-outline-blue" style="padding:6px 16px;font-size:0.8rem" onclick="openModal('Q2C Gap Analysis Template')">Download Free →</button></div></div>
+        <div class="resource-card"><div class="resource-type">Framework · Free Download</div><div class="resource-title">Churn Prediction Starter Framework</div><div class="resource-desc">Signals to track and playbooks to trigger when customers show early warning signs.</div><div class="resource-footer"><span class="caption">PDF</span><button class="btn btn-outline-blue" style="padding:6px 16px;font-size:0.8rem" onclick="openModal('Churn Prediction Framework')">Download Free →</button></div></div>
       </div>
     </div>
   </div>
 
-  <script src="../assets/js/nav.js"></script>
-  <script>
-    var resources = [];
-    var currentResourceId = null;
-    var unlockedEmail = localStorage.getItem('unwindgtm_email') || null;
+  <!-- WEBINARS -->
+  <div class="section">
+    <span class="eyebrow">GTM Webinars & Events</span>
+    <h2 style="margin-bottom:0.5rem">Live Sessions for Revenue Leaders Who Want to Do, Not Just Listen</h2>
+    <p class="body-md" style="max-width:580px;margin-bottom:var(--space-md)">Monthly virtual sessions. 45 min session + 15 min Q&A. Recorded and repurposed as gated assets.</p>
+    <div class="webinar-grid">
+      <div class="webinar-card"><div class="resource-type">Webinar · Coming Soon</div><h3 style="font-size:1rem;margin-bottom:0.5rem">The 9-Pillar Revenue Engine: Is Your GTM Stack Ready for 2026?</h3><p class="body-sm">Introductory session covering the full framework and where most mid-market companies fall short.</p><a href="work-with-us.html" class="btn btn-outline-blue" style="margin-top:1rem;padding:6px 16px;font-size:0.8rem">Register Interest →</a></div>
+      <div class="webinar-card"><div class="resource-type">Webinar · Coming Soon</div><h3 style="font-size:1rem;margin-bottom:0.5rem">From Lead to Cash: Eliminating Handoff Failures Across Marketing, Sales & CS</h3><p class="body-sm">Deep dive into the most common failure points and how to fix them without a re-org.</p><a href="work-with-us.html" class="btn btn-outline-blue" style="margin-top:1rem;padding:6px 16px;font-size:0.8rem">Register Interest →</a></div>
+      <div class="webinar-card"><div class="resource-type">Webinar · Coming Soon</div><h3 style="font-size:1rem;margin-bottom:0.5rem">AI in Revenue Operations: What's Actually Working and What's Just Hype</h3><p class="body-sm">Honest assessment from operators who've deployed AI in real revenue stacks.</p><a href="work-with-us.html" class="btn btn-outline-blue" style="margin-top:1rem;padding:6px 16px;font-size:0.8rem">Register Interest →</a></div>
+    </div>
+  </div>
 
-    // Load resources
-    fetch('../data/resources.json').then(function(r){return r.json();}).then(function(data){
-      resources = data.resources;
-      renderGrid('all');
-    });
+  <!-- COMMUNITY -->
+  <div style="background:var(--navy-deep);padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-lg);align-items:center">
+      <div>
+        <span class="eyebrow orange">Community</span>
+        <h2 style="color:#fff;margin-bottom:0.75rem">Connect with RevOps Leaders Solving the Same Problems</h2>
+        <p style="color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.75">A lightweight community for GTM and RevOps leaders at mid-market SaaS companies. Curated by the unwindGTM founding team.</p>
+      </div>
+      <div class="community-card">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--orange);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem">Community</div>
+        <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:1rem">The Revenue Engine — Mid-Market SaaS RevOps Community by unwindGTM</div>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;margin-bottom:var(--space-sm)">Peer discussions, frameworks, and monthly calls with the founding team.</p>
+        <a href="work-with-us.html" class="btn btn-orange">Request an Invite →</a>
+      </div>
+    </div>
+  </div>
 
-    function renderGrid(filter) {
-      var grid = document.getElementById('resourcesGrid');
-      var filtered = filter === 'all'
-        ? resources
-        : resources.filter(function(r){ return r.type === filter; });
+</div></div>
 
-      if (filtered.length === 0) {
-        grid.innerHTML = '<p style="color:var(--color-text-muted)">No resources in this category yet — check back soon.</p>';
-        return;
-      }
+<!-- EMAIL GATE MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div style="font-size:1.75rem;margin-bottom:0.5rem">📄</div>
+    <h2 style="font-size:1.3rem;margin-bottom:0.4rem">Get Free Access</h2>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.75rem">Enter your details to instantly unlock <strong id="modalResource"></strong>.</p>
+    <div id="modalForm">
+      <input class="modal-input" id="mName" type="text" placeholder="Your name" required>
+      <input class="modal-input" id="mEmail" type="email" placeholder="Work email address" required>
+      <input class="modal-input" id="mCompany" type="text" placeholder="Company (optional)">
+      <button class="btn btn-orange" style="width:100%;justify-content:center" onclick="submitGate(this)">Unlock Resource →</button>
+      <p style="font-size:0.72rem;color:var(--light-text);text-align:center;margin-top:0.5rem">🔒 No spam. Unsubscribe anytime.</p>
+    </div>
+    <div id="modalSuccess" style="display:none;text-align:center;padding:1rem 0">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem">✅</div>
+      <div style="font-weight:700;color:var(--navy);margin-bottom:0.25rem">You're in!</div>
+      <p style="font-size:0.85rem;color:var(--muted)">We'll be in touch with the resource shortly. Check your email.</p>
+    </div>
+  </div>
+</div>
 
-      grid.innerHTML = filtered.map(function(r) {
-        var isUnlocked = !r.gated || unlockedEmail;
-        var btnClass = isUnlocked ? 'free' : 'gated';
-        var btnText = r.gated
-          ? (isUnlocked ? '✓ Unlocked — Read Now' : 'Unlock Free →')
-          : 'Read Free →';
-        var cardClass = isUnlocked && r.gated ? 'resource-card unlocked' : 'resource-card';
-
-        return '<div class="' + cardClass + '" data-type="' + r.type + '">' +
-          '<div class="resource-card-top">' +
-            '<div class="resource-meta">' +
-              '<span class="resource-type">' + r.type + '</span>' +
-              '<span class="resource-date">' + r.date + '</span>' +
-              (r.gated ? '<span class="resource-gated-badge">🔒 Gated</span>' : '<span class="resource-gated-badge" style="color:var(--color-accent)">✓ Free</span>') +
-            '</div>' +
-            '<div class="resource-title">' + r.title + '</div>' +
-            '<p class="resource-desc">' + r.description + '</p>' +
-            '<div class="resource-tags">' +
-              r.tags.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('') +
-            '</div>' +
-          '</div>' +
-          '<div class="resource-card-bottom">' +
-            '<span class="resource-read-time">' + r.readTime + '</span>' +
-            '<button class="resource-access-btn ' + btnClass + '" onclick="handleAccess(\'' + r.id + '\')">' + btnText + '</button>' +
-          '</div>' +
-        '</div>';
-      }).join('');
-    }
-
-    function handleAccess(resourceId) {
-      var resource = resources.find(function(r){ return r.id === resourceId; });
-      if (!resource) return;
-
-      if (!resource.gated || unlockedEmail) {
-        // Direct access
-        if (resource.file && resource.file !== '#') {
-          window.open(resource.file, '_blank');
-        } else {
-          alert('Resource coming soon! Check back shortly.');
-        }
-        return;
-      }
-
-      // Show gate modal
-      currentResourceId = resourceId;
-      document.getElementById('modalResourceTitle').textContent = resource.title;
-      document.getElementById('modalOverlay').classList.add('open');
-      document.getElementById('modalForm').style.display = 'flex';
-      document.getElementById('modalSuccess').style.display = 'none';
-      document.getElementById('modalSubmit').disabled = false;
-      document.getElementById('modalSubmit').textContent = 'Unlock Resource →';
-    }
-
-    // Modal close
-    document.getElementById('modalClose').addEventListener('click', function(){
-      document.getElementById('modalOverlay').classList.remove('open');
-    });
-    document.getElementById('modalOverlay').addEventListener('click', function(e){
-      if (e.target === this) this.classList.remove('open');
-    });
-
-    // Form submit
-    document.getElementById('modalSubmit').addEventListener('click', function(){
-      var name = document.getElementById('modalName').value.trim();
-      var email = document.getElementById('modalEmail').value.trim();
-
-      if (!name) { document.getElementById('modalName').focus(); return; }
-      if (!email || !email.includes('@')) { document.getElementById('modalEmail').focus(); return; }
-
-      var btn = document.getElementById('modalSubmit');
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      // ================================================================
-      // EMAIL CAPTURE — Replace this section with your actual integration
-      // Options:
-      //   A) HubSpot Form API (recommended — you already use HubSpot)
-      //   B) Zapier Webhook
-      //   C) Mailchimp API
-      //   D) Google Sheets via Make.com
-      //
-      // Example HubSpot integration:
-      // fetch('https://api.hsforms.com/submissions/v3/integration/submit/YOUR_PORTAL_ID/YOUR_FORM_ID', {
-      //   method: 'POST',
-      //   headers: {'Content-Type': 'application/json'},
-      //   body: JSON.stringify({
-      //     fields: [
-      //       {name: 'firstname', value: name},
-      //       {name: 'email', value: email},
-      //       {name: 'company', value: document.getElementById('modalCompany').value}
-      //     ],
-      //     context: {pageUri: window.location.href, pageName: document.title}
-      //   })
-      // });
-      // ================================================================
-
-      // Save email locally so user doesn't have to re-enter on same device
-      localStorage.setItem('unwindgtm_email', email);
-      unlockedEmail = email;
-
-      // Simulate submission (replace with real API call above)
-      setTimeout(function(){
-        var resource = resources.find(function(r){ return r.id === currentResourceId; });
-        document.getElementById('modalForm').style.display = 'none';
-        document.getElementById('modalSuccess').style.display = 'block';
-        if (resource && resource.file !== '#') {
-          document.getElementById('modalResourceLink').href = resource.file;
-        } else {
-          document.getElementById('modalResourceLink').style.display = 'none';
-        }
-        // Re-render grid to show unlocked state
-        renderGrid(document.querySelector('.filter-btn.active').dataset.filter);
-      }, 1000);
-    });
-
-    // Filter buttons
-    document.getElementById('filterBar').addEventListener('click', function(e){
-      if (!e.target.classList.contains('filter-btn')) return;
-      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
-      e.target.classList.add('active');
-      renderGrid(e.target.dataset.filter);
-    });
-  </script>
+<script src="../assets/js/nav.js"></script>
+<script>
+function openModal(resource) {
+  document.getElementById('modalResource').textContent = resource;
+  document.getElementById('modalForm').style.display = 'block';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+document.getElementById('modalOverlay').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+function submitGate(btn) {
+  var name = document.getElementById('mName').value.trim();
+  var email = document.getElementById('mEmail').value.trim();
+  if (!name || !email || !email.includes('@')) return;
+  btn.disabled = true; btn.textContent = 'Sending...';
+  localStorage.setItem('unwindgtm_email', email);
+  setTimeout(() => {
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+  }, 900);
+}
+</script>
 </body>
 </html>
