@@ -3,409 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>unwindGTM — Revenue Operations & GTM Strategy</title>
-  <meta name="description" content="unwindGTM helps B2B tech companies untangle their go-to-market, build clean revenue infrastructure, and scale operations that actually work.">
+  <title>unwindGTM — Revenue Operations for Mid-Market B2B SaaS</title>
+  <meta name="description" content="unwindGTM is the Revenue Operations partner for mid-market B2B SaaS companies ($5M–$50M ARR) that want to turn fragmented GTM functions into one predictable revenue engine.">
   <link rel="stylesheet" href="assets/css/main.css">
   <style>
-    /* ===== HERO LAYOUT ===== */
-    .home-hero {
-      min-height: calc(100vh - var(--nav-height));
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: var(--space-lg);
-      padding: var(--space-lg) var(--space-md);
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    .home-hero-content {}
-    .hero-cta-row {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-md);
-      flex-wrap: wrap;
-    }
-
-    /* ===== TOOLS ANIMATION ===== */
-    .hero-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      height: 480px;
-    }
-    .tools-orbit {
-      position: relative;
-      width: 380px;
-      height: 380px;
-    }
-    /* Centre hub */
-    .orbit-hub {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px; height: 80px;
-      background: var(--color-primary);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.75rem;
-      color: #fff;
-      letter-spacing: 0.05em;
-      box-shadow: 0 8px 32px rgba(37,99,235,0.35);
-      z-index: 10;
-      font-family: var(--font-body);
-      text-align: center;
-      line-height: 1.2;
-    }
-    /* Orbit rings */
-    .orbit-ring {
-      position: absolute;
-      top: 50%; left: 50%;
-      border-radius: 50%;
-      border: 1px dashed rgba(37,99,235,0.15);
-      transform: translate(-50%, -50%);
-    }
-    .orbit-ring-1 { width: 200px; height: 200px; }
-    .orbit-ring-2 { width: 320px; height: 320px; }
-    /* Tool nodes — all start at centre, transform moves them outward */
-    .tool-node {
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 64px; height: 64px;
-      margin-top: -32px; margin-left: -32px;
-      border-radius: 16px;
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.09);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      font-size: 0.52rem;
-      font-weight: 700;
-      color: #6B7280;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      cursor: default;
-      will-change: transform;
-    }
-    .tool-node img {
-      width: 30px; height: 30px;
-      object-fit: contain;
-    }
-    /* Inner orbit — 4 tools, radius 110px, 20s */
-    .n1 { animation: orbitA 20s linear infinite; }
-    .n2 { animation: orbitA 20s linear infinite; animation-delay: -5s; }
-    .n3 { animation: orbitA 20s linear infinite; animation-delay: -10s; }
-    .n4 { animation: orbitA 20s linear infinite; animation-delay: -15s; }
-    /* Outer orbit — 5 tools, radius 175px, 32s */
-    .n5 { animation: orbitB 32s linear infinite; }
-    .n6 { animation: orbitB 32s linear infinite; animation-delay: -6.4s; }
-    .n7 { animation: orbitB 32s linear infinite; animation-delay: -12.8s; }
-    .n8 { animation: orbitB 32s linear infinite; animation-delay: -19.2s; }
-    .n9 { animation: orbitB 32s linear infinite; animation-delay: -25.6s; }
-
-    @keyframes orbitA {
-      0%   { transform: rotate(0deg)   translateX(110px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
-    }
-    @keyframes orbitB {
-      0%   { transform: rotate(0deg)   translateX(175px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(175px) rotate(-360deg); }
-    }
-
-    /* Pulse rings emanating from hub */
-    .orbit-pulse {
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 80px; height: 80px;
-      margin-top: -40px; margin-left: -40px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(37,99,235,0.25);
-      animation: pulseRing 3s ease-out infinite;
-      pointer-events: none;
-    }
-    .orbit-pulse:nth-child(2) { animation-delay: -1s; }
-    .orbit-pulse:nth-child(3) { animation-delay: -2s; }
-    @keyframes pulseRing {
-      0%   { transform: scale(1);   opacity: 0.6; }
-      100% { transform: scale(4.5); opacity: 0; }
-    }
-
-    /* ===== STAT STRIP ===== */
-    .stat-strip {
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-      padding: var(--space-md);
-      background: var(--color-bg-card);
-    }
-    .stat-strip-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: var(--space-md);
-    }
-    .stat-item { text-align: center; }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 0.25rem;
-    }
-
-    /* ===== SERVICES GRID ===== */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: var(--space-sm);
-    }
-    .service-card-mini {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 1.25rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      transition: all var(--transition);
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .service-card-mini:hover {
-      border-color: rgba(37,99,235,0.3);
-      box-shadow: 0 4px 16px rgba(37,99,235,0.08);
-      transform: translateY(-1px);
-    }
-    .service-icon-mini { font-size: 1.5rem; line-height: 1; margin-top: 2px; flex-shrink: 0; }
-    .service-name-mini { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
-    .service-desc-mini { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.5; }
-
-    /* ===== FOUNDERS ===== */
-    .founders-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: var(--space-sm);
-    }
-    .founder-card-mini {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      transition: all var(--transition);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .founder-card-mini:hover {
-      border-color: rgba(37,99,235,0.2);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    }
-    .founder-avatar-mini {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2563EB, #0EA5E9);
-      margin-bottom: 1rem;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: #fff;
-    }
-    .founder-avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
-    .founder-name-mini { font-weight: 600; font-size: 1rem; margin-bottom: 0.15rem; }
-    .founder-role-mini {
-      font-size: 0.72rem;
-      color: var(--color-primary);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-    .founder-excerpt { font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.6; }
-
-    /* ===== CTA BAND ===== */
-    .cta-band {
-      background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
-      border-radius: 16px;
-      padding: var(--space-lg);
-      text-align: center;
-      margin: var(--space-lg) var(--space-md);
-      color: #fff;
-    }
-    .cta-band-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      margin-bottom: var(--space-sm);
-      color: #fff;
-    }
-    .cta-band-sub { color: rgba(255,255,255,0.8); margin-bottom: var(--space-md); }
-    .cta-band .btn-primary {
-      background: #fff;
-      color: var(--color-primary);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    .cta-band .btn-primary:hover { background: #f0f0f0; }
-
-    @media (max-width: 900px) {
-      .home-hero { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-    }
+    /* HERO */
+    .hero { min-height: calc(100vh - var(--nav-height)); display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:var(--space-lg); padding:var(--space-lg) var(--space-md); max-width:var(--max-width); margin:0 auto; }
+    .trust-line { display:flex; align-items:center; gap:0.5rem; margin-top:1rem; font-size:0.875rem; color:var(--muted); font-style:italic; }
+    .trust-dot { width:8px; height:8px; border-radius:50%; background:var(--orange); flex-shrink:0; }
+    /* ORBIT */
+    .hero-visual { display:flex; align-items:center; justify-content:center; height:460px; }
+    .tools-orbit { position:relative; width:380px; height:380px; }
+    .orbit-ring { position:absolute; top:50%; left:50%; border-radius:50%; border:1px dashed rgba(26,86,219,0.15); transform:translate(-50%,-50%); }
+    .orbit-ring-1 { width:220px; height:220px; }
+    .orbit-ring-2 { width:350px; height:350px; }
+    .orbit-hub { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:80px; height:80px; background:var(--blue); border-radius:20px; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; font-size:0.72rem; color:#fff; text-align:center; line-height:1.2; box-shadow:0 8px 32px rgba(26,86,219,0.35); z-index:10; }
+    .tool-node { position:absolute; top:50%; left:50%; width:64px; height:64px; margin-top:-32px; margin-left:-32px; border-radius:14px; background:#fff; border:1px solid rgba(0,0,0,0.08); box-shadow:0 4px 16px rgba(0,0,0,0.08); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:0.5rem; font-weight:700; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; will-change:transform; }
+    .tool-node img { width:28px; height:28px; object-fit:contain; }
+    .n1{animation:orbitA 20s linear infinite} .n2{animation:orbitA 20s linear infinite;animation-delay:-5s} .n3{animation:orbitA 20s linear infinite;animation-delay:-10s} .n4{animation:orbitA 20s linear infinite;animation-delay:-15s}
+    .n5{animation:orbitB 32s linear infinite} .n6{animation:orbitB 32s linear infinite;animation-delay:-6.4s} .n7{animation:orbitB 32s linear infinite;animation-delay:-12.8s} .n8{animation:orbitB 32s linear infinite;animation-delay:-19.2s} .n9{animation:orbitB 32s linear infinite;animation-delay:-25.6s}
+    @keyframes orbitA { 0%{transform:rotate(0deg) translateX(110px) rotate(0deg)} 100%{transform:rotate(360deg) translateX(110px) rotate(-360deg)} }
+    @keyframes orbitB { 0%{transform:rotate(0deg) translateX(175px) rotate(0deg)} 100%{transform:rotate(360deg) translateX(175px) rotate(-360deg)} }
+    .orbit-pulse { position:absolute; top:50%; left:50%; width:80px; height:80px; margin-top:-40px; margin-left:-40px; border-radius:50%; border:1.5px solid rgba(26,86,219,0.2); animation:pulseRing 3s ease-out infinite; pointer-events:none; }
+    .orbit-pulse:nth-child(2){animation-delay:-1s} .orbit-pulse:nth-child(3){animation-delay:-2s}
+    @keyframes pulseRing { 0%{transform:scale(1);opacity:0.6} 100%{transform:scale(4.5);opacity:0} }
+    /* STAT STRIP */
+    .stat-strip { background:var(--blue); padding:var(--space-md) 0; }
+    .stat-strip-inner { max-width:var(--max-width); margin:0 auto; padding:0 var(--space-md); display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-md); }
+    .stat-item { text-align:center; }
+    .stat-number { font-family:var(--font-display); font-size:2.5rem; font-weight:800; color:#fff; line-height:1; }
+    .stat-label { font-size:0.8rem; color:rgba(255,255,255,0.7); margin-top:0.25rem; }
+    /* PAIN SECTION */
+    .pain-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+    .pain-cta-card { background:var(--light-blue); border-radius:12px; padding:var(--space-md); text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; }
+    /* HOW WE WORK */
+    .steps-row { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-sm); position:relative; }
+    .steps-row::before { content:''; position:absolute; top:28px; left:15%; right:15%; height:2px; background:linear-gradient(90deg,var(--blue),var(--orange)); z-index:0; }
+    .step-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:var(--space-md); text-align:center; position:relative; z-index:1; }
+    .step-num { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; font-size:1rem; color:#fff; margin:0 auto 1rem; }
+    /* PILLARS */
+    .pillars-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .pillar-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.25rem; transition:all var(--transition); }
+    .pillar-card:hover { border-color:var(--blue); box-shadow:0 4px 16px rgba(26,86,219,0.1); transform:translateY(-2px); }
+    .pillar-icon { font-size:1.5rem; margin-bottom:0.5rem; }
+    .pillar-name { font-weight:700; font-size:0.9rem; color:var(--navy); margin-bottom:0.25rem; }
+    .pillar-desc { font-size:0.78rem; color:var(--muted); }
+    /* WHO WE WORK WITH */
+    .icp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .icp-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:var(--space-md); }
+    .icp-label { font-family:var(--font-mono); font-size:11px; color:var(--orange); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.5rem; }
+    .icp-value { font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:#fff; }
+    /* CTA BAND */
+    .cta-band { background:var(--navy-deep); padding:var(--space-lg) var(--space-md); text-align:center; }
+    .cta-band h2 { color:#fff; max-width:640px; margin:0 auto var(--space-sm); }
+    .cta-band p { color:rgba(255,255,255,0.7); max-width:580px; margin:0 auto; }
+    @media(max-width:900px){ .hero{grid-template-columns:1fr} .hero-visual{display:none} .stat-strip-inner{grid-template-columns:repeat(2,1fr)} .steps-row{grid-template-columns:1fr} .steps-row::before{display:none} .pillars-grid{grid-template-columns:1fr 1fr} .icp-grid{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <div class="content-layer">
+<div class="page-wrapper">
+<div class="content-layer">
 
-      <!-- HERO -->
-      <div class="home-hero">
-        <div class="home-hero-content fade-in">
-          <p class="hero-eyebrow">Revenue Operations & GTM Strategy</p>
-          <h1 class="hero-title">Unwind your<br><em>go-to-market.</em><br>Build what scales.</h1>
-          <p class="hero-subtitle">We help B2B tech companies untangle fractured GTM infrastructure, build clean revenue systems, and create operations that compound over time — not just survive the quarter.</p>
-          <div class="hero-cta-row">
-            <a href="pages/consultation.html" class="btn btn-primary">Book a Free Call</a>
-            <a href="pages/services.html" class="btn btn-ghost">See Our Services</a>
-          </div>
-        </div>
-
-        <!-- ANIMATED TOOLS VISUAL -->
-        <div class="hero-visual">
-          <div class="tools-orbit">
-            <!-- Pulse rings -->
-            <div class="orbit-pulse"></div>
-            <div class="orbit-pulse"></div>
-            <div class="orbit-pulse"></div>
-            <!-- Orbit rings -->
-            <div class="orbit-ring orbit-ring-1"></div>
-            <div class="orbit-ring orbit-ring-2"></div>
-            <!-- Hub -->
-            <div class="orbit-hub">GTM<br>Stack</div>
-
-            <!-- Inner orbit tools -->
-            <div class="tool-node n1">
-              <img src="https://www.vectorlogo.zone/logos/hubspot/hubspot-icon.svg" alt="HubSpot" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">🟠</span>
-              <span>HubSpot</span>
-            </div>
-            <div class="tool-node n2">
-              <img src="https://www.vectorlogo.zone/logos/salesforce/salesforce-icon.svg" alt="Salesforce" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">☁️</span>
-              <span>Salesforce</span>
-            </div>
-            <div class="tool-node n3">
-              <img src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg" alt="BigQuery" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">📊</span>
-              <span>BigQuery</span>
-            </div>
-            <div class="tool-node n4">
-              <img src="https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg" alt="Zapier" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">⚡</span>
-              <span>Zapier</span>
-            </div>
-
-            <!-- Outer orbit tools -->
-            <div class="tool-node n5">
-              <img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg" alt="Analytics" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">📈</span>
-              <span>Analytics</span>
-            </div>
-            <div class="tool-node n6">
-              <img src="https://www.vectorlogo.zone/logos/notion/notion-icon.svg" alt="Notion" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">📝</span>
-              <span>Notion</span>
-            </div>
-            <div class="tool-node n7">
-              <img src="https://www.vectorlogo.zone/logos/slack/slack-icon.svg" alt="Slack" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">💬</span>
-              <span>Slack</span>
-            </div>
-            <div class="tool-node n8">
-              <span style="font-size:1.2rem">🧱</span>
-              <span>Clay</span>
-            </div>
-            <div class="tool-node n9">
-              <img src="https://www.vectorlogo.zone/logos/n8nio/n8nio-icon.svg" alt="n8n" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-              <span style="display:none;font-size:1rem">🔗</span>
-              <span>n8n</span>
-            </div>
-          </div>
-        </div>
+  <!-- HERO -->
+  <div class="hero fade-in">
+    <div>
+      <span class="eyebrow">Revenue Operations & GTM Strategy</span>
+      <h1>Your GTM is Running. It's Just Not Running <em class="accent-orange" style="font-style:italic">Together.</em></h1>
+      <p class="body-lg" style="margin-top:1.5rem;max-width:560px">You've got the product, the team, and the ambition. But Marketing, Sales, CS, and Delivery are still pulling in different directions — costing you pipeline, revenue, and time you can't afford to lose.</p>
+      <p class="body-md" style="margin-top:1rem;max-width:540px">unwindGTM is the Revenue Operations partner for mid-market B2B SaaS companies ($5M–$50M ARR) that want to turn fragmented GTM functions into one predictable revenue engine.</p>
+      <div class="btn-row">
+        <a href="pages/work-with-us.html" class="btn btn-orange">Get a Free Revenue Audit →</a>
+        <a href="pages/services.html" class="btn btn-outline-blue">Explore Our Offerings</a>
       </div>
-
-      <!-- STAT STRIP -->
-      <div class="stat-strip">
-        <div class="stat-strip-inner">
-          <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Co-Founders</div></div>
-          <div class="stat-item"><div class="stat-number">30+</div><div class="stat-label">Years Combined Experience</div></div>
-          <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">Service Lines</div></div>
-          <div class="stat-item"><div class="stat-number">B2B</div><div class="stat-label">SaaS & Tech Focus</div></div>
-        </div>
+      <div class="trust-line">
+        <span class="trust-dot"></span>
+        Built by operators who've led RevOps across Fintech, LegalTech, and B2B SaaS unicorns globally.
       </div>
-
-      <!-- SERVICES -->
-      <div class="section">
-        <p class="section-label">What We Do</p>
-        <h2 class="section-title">Revenue Operations, end-to-end.</h2>
-        <div class="services-grid" id="servicesGrid"><p style="color:var(--color-text-muted)">Loading services...</p></div>
-        <div style="margin-top: var(--space-md); text-align: center;">
-          <a href="pages/services.html" class="btn btn-outline">View All Services</a>
-        </div>
+    </div>
+    <div class="hero-visual">
+      <div class="tools-orbit">
+        <div class="orbit-pulse"></div><div class="orbit-pulse"></div><div class="orbit-pulse"></div>
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-hub">GTM<br>Stack</div>
+        <div class="tool-node n1"><img src="https://www.vectorlogo.zone/logos/hubspot/hubspot-icon.svg" alt="" onerror="this.style.display='none'"><span>HubSpot</span></div>
+        <div class="tool-node n2"><img src="https://www.vectorlogo.zone/logos/salesforce/salesforce-icon.svg" alt="" onerror="this.style.display='none'"><span>Salesforce</span></div>
+        <div class="tool-node n3"><img src="https://www.vectorlogo.zone/logos/zapier/zapier-icon.svg" alt="" onerror="this.style.display='none'"><span>Zapier</span></div>
+        <div class="tool-node n4"><img src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg" alt="" onerror="this.style.display='none'"><span>BigQuery</span></div>
+        <div class="tool-node n5"><img src="https://www.vectorlogo.zone/logos/slack/slack-icon.svg" alt="" onerror="this.style.display='none'"><span>Slack</span></div>
+        <div class="tool-node n6"><img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg" alt="" onerror="this.style.display='none'"><span>Analytics</span></div>
+        <div class="tool-node n7"><img src="https://www.vectorlogo.zone/logos/notion/notion-icon.svg" alt="" onerror="this.style.display='none'"><span>Notion</span></div>
+        <div class="tool-node n8"><span style="font-size:1.2rem">🧱</span><span>Clay</span></div>
+        <div class="tool-node n9"><span style="font-size:1.1rem">🔗</span><span>n8n</span></div>
       </div>
-
-      <hr class="section-divider">
-
-      <!-- FOUNDERS -->
-      <div class="section">
-        <p class="section-label">The Team</p>
-        <h2 class="section-title">Operators, not advisors.</h2>
-        <div class="founders-strip" id="foundersStrip"><p style="color:var(--color-text-muted)">Loading founders...</p></div>
-        <div style="margin-top: var(--space-md); text-align: center;">
-          <a href="pages/about.html" class="btn btn-outline">Meet the Founders</a>
-        </div>
-      </div>
-
-      <!-- CTA BAND -->
-      <div class="cta-band">
-        <h2 class="cta-band-title">Ready to unwind your GTM?</h2>
-        <p class="cta-band-sub">Book a free consultation with one of our founders. No pitch decks. Just honest conversation about your biggest GTM challenges.</p>
-        <a href="pages/consultation.html" class="btn btn-primary">Schedule a Call →</a>
-      </div>
-
     </div>
   </div>
 
-  <script src="assets/js/nav-root.js"></script>
-  <script>
-    fetch('data/services.json').then(r=>r.json()).then(data=>{
-      document.getElementById('servicesGrid').innerHTML = data.services.map(s=>`
-        <a href="pages/services.html#${s.id}" class="service-card-mini">
-          <div class="service-icon-mini">${s.icon}</div>
-          <div><div class="service-name-mini">${s.title}</div><div class="service-desc-mini">${s.tagline}</div></div>
-        </a>`).join('');
-    });
-    fetch('data/founders.json').then(r=>r.json()).then(data=>{
-      document.getElementById('foundersStrip').innerHTML = data.founders.map(f=>`
-        <div class="founder-card-mini">
-          <div class="founder-avatar-mini"><img src="${f.image}" alt="${f.name}" onerror="this.parentElement.textContent='${f.name[0]}'"></div>
-          <div class="founder-name-mini">${f.name}</div>
-          <div class="founder-role-mini">${f.role}</div>
-          <div class="founder-excerpt">${f.bio.substring(0,140)}...</div>
-        </div>`).join('');
-    });
-  </script>
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="stat-strip-inner">
+      <div class="stat-item"><div class="stat-number">9</div><div class="stat-label">RevOps Pillars Covered</div></div>
+      <div class="stat-item"><div class="stat-number">$5M–50M</div><div class="stat-label">ARR Sweet Spot</div></div>
+      <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Founding Operators</div></div>
+      <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Years Combined RevOps Experience</div></div>
+    </div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <div style="background:var(--bg-light); padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow">The Problem We Solve</span>
+      <h2 style="margin-bottom:0.75rem">Sound Familiar?</h2>
+      <p class="body-lg" style="max-width:620px;margin-bottom:var(--space-md)">Most companies scaling past $5M ARR hit the same wall. It's not a product problem or a headcount problem. It's an operations problem.</p>
+      <div class="pain-grid">
+        <div class="card-pain"><div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.5rem">Marketing generates leads. Sales can't follow up fast enough.</div><div class="body-sm">No shared definitions, no SLAs, no handoff process — just dropped balls and lost deals.</div></div>
+        <div class="card-pain"><div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.5rem">Your CRM is a dumping ground, not a source of truth.</div><div class="body-sm">Bad data means bad forecasts. And bad forecasts mean bad board conversations.</div></div>
+        <div class="card-pain"><div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.5rem">Your tools are expensive but underused.</div><div class="body-sm">You're paying for HubSpot, Gainsight, and five other platforms — but getting 30% of their value.</div></div>
+        <div class="card-pain"><div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.5rem">Post-sale is an afterthought — until churn hits.</div><div class="body-sm">CS and Delivery are reactive, not proactive. Renewals are stressful. Expansion is accidental.</div></div>
+        <div class="card-pain"><div style="font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.5rem">You don't need more hires. You need better systems.</div><div class="body-sm">A full-time VP of RevOps costs $180K+. You need the output — not the overhead.</div></div>
+        <div class="pain-cta-card"><div style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--navy)">This is exactly what we fix.</div><a href="pages/work-with-us.html" class="btn btn-orange">Get a Free Revenue Audit →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW WE WORK -->
+  <div class="section">
+    <span class="eyebrow">How We Work</span>
+    <h2 style="margin-bottom:0.75rem">One Partner. The Entire Revenue Engine.</h2>
+    <p class="body-lg" style="max-width:620px;margin-bottom:var(--space-md)">We don't plug into one department. We connect all of them. From the first marketing touch to the last implementation handoff — we design, build, and run the systems that make growth predictable.</p>
+    <div class="steps-row">
+      <div class="step-card"><div class="step-num" style="background:var(--blue)">1</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--navy);margin-bottom:0.5rem">DIAGNOSE</div><p class="body-sm">We audit your full GTM stack across all 9 RevOps pillars and show you exactly where revenue is leaking.</p></div>
+      <div class="step-card"><div class="step-num" style="background:var(--blue)">2</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--navy);margin-bottom:0.5rem">DESIGN & BUILD</div><p class="body-sm">We redesign the processes, implement the tools, and build the data infrastructure to fix the root causes.</p></div>
+      <div class="step-card"><div class="step-num" style="background:var(--orange)">3</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--navy);margin-bottom:0.5rem">RUN & OPTIMIZE</div><p class="body-sm">We stay in as your fractional RevOps layer, continuously improving outcomes as you scale.</p></div>
+    </div>
+  </div>
+
+  <!-- 9 PILLARS -->
+  <div style="background:var(--bg-light);padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow">Our Framework</span>
+      <h2 style="margin-bottom:0.75rem">The 9-Pillar Revenue Engine</h2>
+      <p class="body-lg" style="max-width:620px;margin-bottom:var(--space-md)">Most agencies stop at 5 pillars. We cover all 9 — because that's what actually moves the needle from lead to cash to expansion.</p>
+      <div class="pillars-grid">
+        <div class="pillar-card"><div class="pillar-icon">🧠</div><div class="pillar-name">Strategy & Revenue Planning</div><div class="pillar-desc">GTM direction, annual planning, buying-group strategy</div></div>
+        <div class="pillar-card"><div class="pillar-icon">🔄</div><div class="pillar-name">Process</div><div class="pillar-desc">End-to-end lifecycle mapping and optimization</div></div>
+        <div class="pillar-card"><div class="pillar-icon">📊</div><div class="pillar-name">Data</div><div class="pillar-desc">Governance, quality, modeling, and forecasting</div></div>
+        <div class="pillar-card"><div class="pillar-icon">🎓</div><div class="pillar-name">Enablement</div><div class="pillar-desc">Training, playbooks, and adoption programs</div></div>
+        <div class="pillar-card"><div class="pillar-icon">⚙️</div><div class="pillar-name">Systems & Tools</div><div class="pillar-desc">Selection, implementation, integration, automation</div></div>
+        <div class="pillar-card"><div class="pillar-icon">👥</div><div class="pillar-name">People</div><div class="pillar-desc">Team structure, hiring, performance frameworks</div></div>
+        <div class="pillar-card"><div class="pillar-icon">💰</div><div class="pillar-name">Finance & Revenue Assurance</div><div class="pillar-desc">Quote-to-Cash, billing, revenue recognition</div></div>
+        <div class="pillar-card"><div class="pillar-icon">🤖</div><div class="pillar-name">AI & Intelligent Operations</div><div class="pillar-desc">Predictive analytics, generative AI, agentic workflows</div></div>
+        <div class="pillar-card"><div class="pillar-icon">🛡️</div><div class="pillar-name">Compliance & Partner Ecosystem</div><div class="pillar-desc">Security, audit readiness, partner/channel ops</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO WE WORK WITH -->
+  <div style="background:var(--navy-deep);padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow" style="color:var(--orange)">Who We Work With</span>
+      <h2 style="color:#fff;margin-bottom:0.75rem">Built for Mid-Market B2B SaaS. Not Everyone.</h2>
+      <div class="icp-grid" style="margin-top:var(--space-md)">
+        <div class="icp-card"><div class="icp-label">Company Stage</div><div class="icp-value">$5M – $50M ARR</div></div>
+        <div class="icp-card"><div class="icp-label">Industry Focus</div><div class="icp-value">B2B SaaS, Fintech, LegalTech</div></div>
+        <div class="icp-card"><div class="icp-label">Ideal Situation</div><div class="icp-value">Growing Fast, Ops Lagging Behind</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <h2>Ready to Stop Leaving Revenue on the Table?</h2>
+      <p style="margin-top:0.75rem">Book a free 30-minute strategy call. We'll look at your current GTM setup, identify the biggest leaks, and give you an honest view of what's fixable — and how fast.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a href="pages/work-with-us.html" class="btn btn-orange">Book a Free Strategy Call →</a>
+        <a href="pages/services.html" class="btn btn-outline-white">See Our Full Offerings</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<script src="assets/js/nav-root.js"></script>
 </body>
 </html>
