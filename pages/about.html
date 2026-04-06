@@ -3,208 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — unwindGTM</title>
-  <meta name="description" content="Meet the three operators behind unwindGTM — Debasish, Vaibhav, and Aishwarya. Founders who've built revenue engines from scratch across Fintech, LegalTech, and B2B SaaS.">
+  <title>About Us — Unwind GTM</title>
+  <meta name="description" content="Meet the founders of Unwind GTM — three operators with deep experience in Revenue Operations, Sales, Marketing, and GTM strategy.">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .founder-section {
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .founder-section:last-of-type { border-bottom: none; }
+    .founder-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .founder-layout.reverse { direction: rtl; }
+    .founder-layout.reverse > * { direction: ltr; }
+    .founder-photo-wrap {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+    }
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-2) 100%);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .founder-photo-placeholder {
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--color-primary-dim);
+      opacity: 0.4;
+    }
+    .founder-photo-badge {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+    }
+    .founder-photo-badge-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .founder-photo-badge-role {
+      font-size: 0.7rem;
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+    .founder-content {}
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .founder-role {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--space-md);
+    }
+    .founder-bio {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+    .expertise-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: var(--space-md);
+    }
+    .founder-actions {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+      .founder-layout { grid-template-columns: 1fr; }
+      .founder-layout.reverse { direction: ltr; }
+      .founder-photo-wrap { position: static; }
+      .founder-photo { aspect-ratio: 1; max-width: 220px; }
+    }
+  </style>
 </head>
 <body>
   <div class="page-wrapper">
-
-    <!-- HERO -->
-    <div class="section" style="padding-bottom:0;">
-      <p class="hero-eyebrow fade-in">// About Us</p>
-      <h1 class="hero-title fade-in">Three Operators.<br><em>One Revenue Engine.</em></h1>
-      <p class="hero-subtitle fade-in" style="max-width:700px;">unwindGTM was built by revenue operators who've been in the trenches — building GTM functions from scratch, fixing broken systems, and delivering outcomes at scale across B2B SaaS, Fintech, and LegalTech unicorns globally. We don't advise from the sidelines. We embed, build, and hand it back to you.</p>
-    </div>
-
-    <!-- FOUNDERS -->
-    <div class="section">
-
-      <!-- DEBASISH -->
-      <div class="founder-section">
-        <div class="founder-layout fade-in">
-          <div class="founder-photo-wrap">
-            <div class="founder-photo">
-              <img src="../assets/images/debasish.jpg" alt="Debasish" onerror="this.style.display='none'">
-              <div class="founder-initial">D</div>
-            </div>
-          </div>
-          <div class="founder-content">
-            <div class="founder-role-tag">// Co-Founder · GTM Strategy & RevOps Architecture</div>
-            <h2 class="founder-name">Debasish</h2>
-            <div class="expertise-tags">
-              <span class="tag">GTM Architecture</span>
-              <span class="tag">CRM & Workflow Automation</span>
-              <span class="tag">LLM & AI Applications</span>
-              <span class="tag">Revenue Strategy</span>
-              <span class="tag">Fintech · LegalTech</span>
-            </div>
-            <p class="founder-bio">Debasish is a high-agency, outcome-driven operator with over a decade of experience architecting global GTM strategies and building revenue operations from the ground up. As a specialist in B2B technology firms across Fintech and LegalTech, he has a proven track record of transforming fragmented business functions into cohesive, high-growth engines.</p>
-            <p class="founder-bio">In the post-AI era, he leads at the cutting edge of integrations, custom development, and agentic workflows — bridging complex technology with practical business impact. He brings a multi-disciplinary lens to the Lead-to-Cash puzzle and specialises in full-funnel strategy and execution.</p>
-            <p class="founder-bio" style="font-weight:600;color:var(--color-text);font-style:italic;">"I've run the functions you're trying to fix. Not just advised on them."</p>
-            <div class="founder-links">
-              <a href="work-with-us.html" class="btn btn-accent">Book a Call with Debasish →</a>
-              <a href="https://www.linkedin.com/in/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-            </div>
-          </div>
-        </div>
+    <div class="content-layer">
+      <div class="hero section">
+        <p class="hero-eyebrow">// About Us</p>
+        <h1 class="hero-title">Three operators.<br><em>One mission.</em></h1>
+        <p class="hero-subtitle">Unwind GTM was built by revenue operators who've been in the trenches — building GTM functions from scratch, fixing broken systems, and delivering outcomes at scale. We don't advise from the sidelines. We build alongside you.</p>
       </div>
 
-      <!-- VAIBHAV -->
-      <div class="founder-section">
-        <div class="founder-layout reverse fade-in">
-          <div class="founder-photo-wrap">
-            <div class="founder-photo">
-              <img src="../assets/images/vaibhav.jpg" alt="Vaibhav" onerror="this.style.display='none'">
-              <div class="founder-initial">V</div>
-            </div>
-          </div>
-          <div class="founder-content">
-            <div class="founder-role-tag">// Co-Founder · Sales & Marketing Operations</div>
-            <h2 class="founder-name">Vaibhav</h2>
-            <div class="expertise-tags">
-              <span class="tag">Sales & Marketing Ops</span>
-              <span class="tag">Pipeline Architecture</span>
-              <span class="tag">Attribution Modeling</span>
-              <span class="tag">Lifecycle Automation</span>
-              <span class="tag">AI-native GTM</span>
-            </div>
-            <p class="founder-bio">Vaibhav is a systems-first Sales & Marketing Operations leader with years of hands-on experience turning fragmented GTM infrastructure into clean, scalable revenue engines. Rooted in B2B SaaS, he has built Sales and Marketing Operations functions from the ground up — owning the full stack of People, Process, Data, Enablement, and Systems.</p>
-            <p class="founder-bio">His expertise sits at the intersection of lifecycle orchestration, marketing automation, and data architecture. From designing ICP frameworks to introducing pipeline layers that gave leadership first-time funnel visibility before MQL — Vaibhav has a track record of solving problems that most operators don't even recognise exist until they surface as a broken quarter.</p>
-            <p class="founder-bio">In the post-AI world, Vaibhav has leaned into building AI-native GTM workflows — combining tools like Clay, n8n, Zapier, and HeyReach with LLM-assisted processes to eliminate manual overhead and accelerate execution without adding headcount. His approach is pragmatic: <strong>AI where it scales, deterministic logic where it governs.</strong></p>
-            <div class="founder-links">
-              <a href="work-with-us.html" class="btn btn-accent">Book a Call with Vaibhav →</a>
-              <a href="https://www.linkedin.com/in/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AISHWARYA -->
-      <div class="founder-section">
-        <div class="founder-layout fade-in">
-          <div class="founder-photo-wrap">
-            <div class="founder-photo">
-              <img src="../assets/images/aishwarya.jpg" alt="Aishwarya" onerror="this.style.display='none'">
-              <div class="founder-initial">A</div>
-            </div>
-          </div>
-          <div class="founder-content">
-            <div class="founder-role-tag">// Co-Founder · Customer Success & Finance Operations</div>
-            <h2 class="founder-name">Aishwarya</h2>
-            <div class="expertise-tags">
-              <span class="tag">CS Operations</span>
-              <span class="tag">Quote-to-Cash</span>
-              <span class="tag">Financial Planning & Analysis</span>
-              <span class="tag">Revenue Recognition</span>
-              <span class="tag">Data & Systems</span>
-            </div>
-            <p class="founder-bio">Aishwarya brings a rare combination of Industrial Engineering, Chartered Accountancy, and deep RevOps execution — the kind of multi-disciplinary thinking that most companies desperately need and rarely find in one person.</p>
-            <p class="founder-bio">He specialises in Revenue Operations for B2B Tech and SaaS companies, with hands-on experience setting up and optimising CS, Finance, and Operations functions across multiple unicorns and soon-to-be unicorns globally — both as a full-time leader and as a consultant.</p>
-            <p class="founder-bio">He sits at the intersection of data, systems, engineering, and finance — the four pillars that determine whether a revenue engine can actually scale.</p>
-            <div class="founder-links">
-              <a href="work-with-us.html" class="btn btn-accent">Book a Call with Aishwarya →</a>
-              <a href="https://www.linkedin.com/in/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- OPERATORS FIRST -->
-    <div class="section-full section-light">
-      <div class="section-full-inner section">
-        <p class="section-label fade-in">// What Makes Us Different</p>
-        <h2 class="section-title fade-in">Operators First. Consultants Never.</h2>
-        <p class="section-subtitle fade-in">We don't hand you a deck and disappear. We embed, execute, and leave you with systems — not dependencies.</p>
-
-        <div class="diff-grid">
-          <div class="diff-card fade-in">
-            <div class="diff-number">01</div>
-            <div class="diff-title">We've run the functions you're trying to fix</div>
-            <p class="diff-desc">Not just advised on them. Marketing Ops, Sales Ops, CS Ops, Finance — we've owned these roles from the inside.</p>
-          </div>
-          <div class="diff-card fade-in">
-            <div class="diff-number">02</div>
-            <div class="diff-title">We cover all 9 modern RevOps pillars</div>
-            <p class="diff-desc">Most agencies stop at 5. We go all the way — including AI & Intelligent Operations and Finance & Revenue Assurance.</p>
-          </div>
-          <div class="diff-card fade-in">
-            <div class="diff-number">03</div>
-            <div class="diff-title">Full lifecycle coverage</div>
-            <p class="diff-desc">Marketing → Sales → CS → Delivery → Implementation → Finance. We operate across the entire revenue arc, not just one slice of it.</p>
-          </div>
-          <div class="diff-card fade-in">
-            <div class="diff-number">04</div>
-            <div class="diff-title">Sector-deep in B2B SaaS, Fintech & LegalTech</div>
-            <p class="diff-desc">Not generalist consultants. We know your market, your buyers, and the specific patterns that drive — and kill — growth.</p>
-          </div>
-          <div class="diff-card fade-in">
-            <div class="diff-number">05</div>
-            <div class="diff-title">Flexible models, zero lock-ins</div>
-            <p class="diff-desc">No bloated retainers. No unnecessary hires. Just outcomes — packaged in a way that fits where you are right now.</p>
-          </div>
-          <div class="diff-card fade-in">
-            <div class="diff-number">06</div>
-            <div class="diff-title">Built to transfer ownership</div>
-            <p class="diff-desc">Every system we build, we document and hand back to you. You shouldn't need us forever — and we design for that from day one.</p>
-          </div>
-        </div>
+      <!-- FOUNDERS — loaded from founders.json -->
+      <div class="section" id="foundersContainer">
+        <p style="color:var(--color-text-muted)">Loading founder profiles...</p>
       </div>
     </div>
-
-    <!-- OPERATING PRINCIPLES -->
-    <div class="section">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-lg);align-items:start;">
-        <div>
-          <p class="section-label fade-in">// Our Operating Principles</p>
-          <h2 class="section-title fade-in">How We Show Up for Every Client</h2>
-          <p class="section-subtitle fade-in">These aren't values on a wall. They're how we actually operate — every engagement, every week.</p>
-        </div>
-        <div class="principle-list fade-in">
-          <div class="principle-item">
-            <div class="principle-num">1</div>
-            <div class="principle-text">
-              <strong>Customer First — always.</strong>
-              <p>Your pain, your pace, your priorities. We adapt to what you actually need — not what's easiest for us to deliver.</p>
-            </div>
-          </div>
-          <div class="principle-item">
-            <div class="principle-num">2</div>
-            <div class="principle-text">
-              <strong>Outcomes over outputs.</strong>
-              <p>We measure success by pipeline velocity, win rates, and churn — not slide decks and status updates.</p>
-            </div>
-          </div>
-          <div class="principle-item">
-            <div class="principle-num">3</div>
-            <div class="principle-text">
-              <strong>Transparent and direct.</strong>
-              <p>We tell you what's broken and why — before we tell you what we'll do about it. No sugarcoating.</p>
-            </div>
-          </div>
-          <div class="principle-item">
-            <div class="principle-num">4</div>
-            <div class="principle-text">
-              <strong>Built to transfer.</strong>
-              <p>Every system we build, we document and hand back to you with full ownership. You shouldn't need us forever.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-section">
-      <h2>Talk to the People Who Built This</h2>
-      <p>No sales team. No account managers. Just a conversation with a founder — about your revenue engine and what's holding it back.</p>
-      <div class="cta-row" style="justify-content:center;">
-        <a href="work-with-us.html" class="btn btn-accent">Book a Free Strategy Call →</a>
-      </div>
-    </div>
-
   </div>
+
   <script src="../assets/js/nav.js"></script>
+  <script>
+    const CONSULT_LINKS = {
+      debasish: 'consult-debasish.html',
+      vaibhav:  'consult-vaibhav.html',
+      aishwarya:'consult-aishwarya.html'
+    };
+
+    fetch('../data/founders.json').then(r=>r.json()).then(data=>{
+      const container = document.getElementById('foundersContainer');
+      container.innerHTML = data.founders.map((f, i) => `
+        <div class="founder-section fade-in">
+          <div class="founder-layout ${i%2===1 ? 'reverse' : ''}">
+            <div class="founder-photo-wrap">
+              <div class="founder-photo">
+                <img src="../${f.image}" alt="${f.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="founder-photo-placeholder" style="display:none">${f.name[0]}</div>
+                <div class="founder-photo-badge">
+                  <div class="founder-photo-badge-name">${f.name}</div>
+                  <div class="founder-photo-badge-role">${f.role} · Unwind GTM</div>
+                </div>
+              </div>
+              ${f.linkedin !== '#' ? `<a href="${f.linkedin}" target="_blank" class="btn btn-ghost" style="width:100%;margin-top:0.75rem;justify-content:center">LinkedIn ↗</a>` : ''}
+            </div>
+            <div class="founder-content">
+              <h2 class="founder-name">${f.name}</h2>
+              <div class="founder-role">${f.role}</div>
+              <p class="founder-bio">${f.bio}</p>
+              <div class="expertise-grid">
+                ${f.expertise.map(e => `<span class="tag">${e}</span>`).join('')}
+              </div>
+              <div class="founder-actions">
+                <a href="${CONSULT_LINKS[f.id]}" class="btn btn-primary">Consult with ${f.name} →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    });
+  </script>
 </body>
 </html>
+
