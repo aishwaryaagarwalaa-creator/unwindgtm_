@@ -4,9 +4,7 @@ const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 const NAV_HTML = `
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo">
-      unwindGTM
-    </a>
+    <a href="../index.html" class="nav-logo"><span style="color:#0d1f3c;font-family:'DM Sans',sans-serif;font-weight:600">unwind</span><span style="color:#e07830;font-family:'DM Sans',sans-serif;font-weight:800">GTM</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="../index.html" data-page="index.html">Home</a></li>
       <li><a href="../pages/about.html" data-page="about.html">About</a></li>
@@ -23,7 +21,7 @@ const NAV_HTML = `
 const FOOTER_HTML = `
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-logo">unwindGTM</div>
+    <div class="footer-logo"><span style="color:#0d1f3c;font-family:'DM Sans',sans-serif;font-weight:600">unwind</span><span style="color:#e07830;font-family:'DM Sans',sans-serif;font-weight:800">GTM</span></div>
     <p class="footer-tagline">Untangle your go-to-market. Build systems that scale.</p>
     <ul class="footer-links">
       <li><a href="../index.html">Home</a></li>
