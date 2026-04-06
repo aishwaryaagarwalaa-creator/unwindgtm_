@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work With Us — unwindGTM</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .engagement-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .engagement-card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:var(--space-md); display:flex; flex-direction:column; }
+    .engagement-card.featured { border-color:var(--blue); box-shadow:0 0 0 1px var(--blue),0 8px 32px rgba(26,86,219,0.12); }
+    .engagement-label { font-family:var(--font-mono); font-size:11px; color:var(--blue); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem; }
+    .engagement-label.popular { color:var(--blue); }
+    .engagement-title { font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; }
+    .engagement-price { font-family:var(--font-display); font-size:1.5rem; font-weight:800; color:var(--navy); margin:0.5rem 0 1rem; }
+    .includes-list { list-style:none; display:flex; flex-direction:column; gap:0.5rem; flex:1; }
+    .includes-list li { font-size:0.85rem; color:var(--muted); display:flex; align-items:flex-start; gap:0.5rem; }
+    .includes-list li::before { content:'✓'; color:var(--blue); font-weight:700; flex-shrink:0; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-lg); align-items:start; }
+    .form-group { display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1rem; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    label { font-size:0.8rem; font-weight:600; color:var(--navy); }
+    input, select, textarea { width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:8px; font-family:var(--font-body); font-size:0.9rem; color:var(--navy); background:#fff; outline:none; transition:border-color var(--transition); }
+    input:focus, select:focus, textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(26,86,219,0.08); }
+    textarea { min-height:120px; resize:vertical; }
+    .faq-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .faq-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1.5rem; }
+    .faq-q { font-size:0.9rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; }
+    .faq-a { font-size:0.85rem; color:var(--muted); line-height:1.6; }
+    .contact-info-item { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
+    .contact-icon { width:40px; height:40px; border-radius:10px; background:var(--light-blue); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .founder-links { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem; }
+    .form-success { background:rgba(22,163,74,0.1); border:1px solid rgba(22,163,74,0.3); border-radius:8px; padding:1.5rem; text-align:center; display:none; }
+    @media(max-width:900px){ .engagement-grid{grid-template-columns:1fr} .contact-grid{grid-template-columns:1fr} .faq-grid{grid-template-columns:1fr 1fr} }
+    @media(max-width:600px){ .faq-grid{grid-template-columns:1fr} .form-row{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+<div class="page-wrapper"><div class="content-layer">
+
+  <!-- HERO -->
+  <div class="section" style="padding-top:calc(var(--space-xl) + var(--nav-height))">
+    <span class="eyebrow">Work With Us</span>
+    <h1>Let's Fix Your<br><em class="accent-orange">Revenue Engine.</em></h1>
+    <p class="body-lg" style="max-width:580px;margin-top:1.5rem">Book a 30-minute strategy call with one of our founding partners. No sales pitch — just an honest conversation about where you are and what would move the needle.</p>
+  </div>
+
+  <!-- ENGAGEMENT MODELS -->
+  <div style="background:var(--bg-light);padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow">How to Engage</span>
+      <h2 style="margin-bottom:0.75rem">Start Where You Are</h2>
+      <p class="body-lg" style="max-width:580px;margin-bottom:var(--space-md)">Three ways to work with unwindGTM — from a free diagnostic to a fully managed RevOps layer.</p>
+      <div class="engagement-grid">
+        <!-- FREE AUDIT -->
+        <div class="engagement-card">
+          <div class="engagement-label">Free · 30 minutes</div>
+          <div class="engagement-title">Revenue Audit Call</div>
+          <div class="engagement-price">Free</div>
+          <p class="body-sm" style="margin-bottom:1rem">A focused 30-minute conversation about your current GTM setup. We'll diagnose the biggest leaks and give you one or two things to act on immediately.</p>
+          <ul class="includes-list">
+            <li>GTM diagnostic across all 9 pillars</li>
+            <li>Top 2–3 revenue leaks identified</li>
+            <li>Honest fit assessment</li>
+            <li>No pitch deck, no follow-up pressure</li>
+          </ul>
+          <a href="mailto:founders@unwindgtm.com" class="btn btn-outline-blue" style="margin-top:auto;padding-top:var(--space-sm);justify-content:center">Book via Email →</a>
+        </div>
+        <!-- HEALTH CHECK FEATURED -->
+        <div class="engagement-card featured">
+          <div class="engagement-label popular">Most Popular · 2–3 weeks</div>
+          <div class="engagement-title">RevOps Health Check</div>
+          <div class="engagement-price">Project-based</div>
+          <p class="body-sm" style="margin-bottom:1rem">A comprehensive audit of your full GTM stack across all 9 RevOps pillars. Delivered as a prioritized action plan with quick wins and a 90-day roadmap.</p>
+          <ul class="includes-list">
+            <li>Full 9-pillar audit</li>
+            <li>Stakeholder interviews</li>
+            <li>CRM & MAP assessment</li>
+            <li>Data quality review</li>
+            <li>30/60/90-day roadmap</li>
+            <li>Executive presentation</li>
+          </ul>
+          <a href="#contact" class="btn btn-blue" style="margin-top:auto;padding-top:var(--space-sm);justify-content:center">Start with the Health Check →</a>
+        </div>
+        <!-- RETAINER -->
+        <div class="engagement-card">
+          <div class="engagement-label">Ongoing · Monthly</div>
+          <div class="engagement-title">Fractional RevOps Retainer</div>
+          <div class="engagement-price">Custom / per scope</div>
+          <p class="body-sm" style="margin-bottom:1rem">We become your embedded RevOps layer — designing, building, and running the systems that make growth predictable. Flexible scope, no long-term lock-ins.</p>
+          <ul class="includes-list">
+            <li>Dedicated RevOps resource</li>
+            <li>Weekly working sessions</li>
+            <li>Process design & tool implementation</li>
+            <li>Monthly reporting</li>
+            <li>Flexible scope</li>
+            <li>30-day notice, no lock-in</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline-blue" style="margin-top:auto;padding-top:var(--space-sm);justify-content:center">Discuss Retainer →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow">Talk to a Founder</span>
+        <h2>Talk to a Founder Directly</h2>
+        <p class="body-md" style="margin-top:1rem;margin-bottom:var(--space-md)">No account managers. No sales team. When you reach out to unwindGTM, you talk to one of the three founders — the people who'll actually do the work.</p>
+        <div class="contact-info-item">
+          <div class="contact-icon">✉️</div>
+          <div><div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.25rem">Email us directly</div><a href="mailto:founders@unwindgtm.com" style="font-weight:700;font-size:1.1rem;color:var(--navy)">founders@unwindgtm.com</a></div>
+        </div>
+        <div style="margin-top:var(--space-md)">
+          <div style="font-size:0.8rem;font-weight:600;color:var(--navy);margin-bottom:0.75rem">Connect with a Founder</div>
+          <div class="founder-links">
+            <a href="consult-debasish.html" class="btn btn-outline-blue" style="padding:8px 16px;font-size:0.8rem">Debasish ↗</a>
+            <a href="consult-vaibhav.html" class="btn btn-outline-blue" style="padding:8px 16px;font-size:0.8rem">Vaibhav ↗</a>
+            <a href="consult-aishwarya.html" class="btn btn-outline-blue" style="padding:8px 16px;font-size:0.8rem">Aishwarya ↗</a>
+          </div>
+        </div>
+        <!-- Calendar placeholder -->
+        <div style="margin-top:var(--space-md);background:var(--bg-light);border:1px dashed var(--border);border-radius:12px;padding:var(--space-md);text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:0.8rem">
+          📅 Calendar embed — replace with Calendly or Cal.com
+        </div>
+      </div>
+      <!-- CONTACT FORM -->
+      <div style="background:var(--bg-light);border:1px solid var(--border);border-radius:20px;padding:var(--space-md)">
+        <h3 style="margin-bottom:var(--space-sm)">Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="First name"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+        </div>
+        <div class="form-group"><label>Work Email</label><input type="email" placeholder="you@company.com"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Company</label><input type="text" placeholder="Company name"></div>
+          <div class="form-group"><label>Current ARR</label>
+            <select>
+              <option value="">Select range</option>
+              <option>Under $1M</option><option>$1M – $5M</option><option>$5M – $15M</option><option>$15M – $50M</option><option>$50M+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>What can we help with?</label>
+          <select>
+            <option value="">Select topic</option>
+            <option>Revenue Strategy & Advisory</option><option>Marketing Operations</option><option>Sales Operations</option><option>CS Operations</option><option>Finance & Revenue Ops</option><option>AI Offerings</option><option>Fractional RevOps Retainer</option><option>RevOps Health Check</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell us about your situation</label><textarea placeholder="What's the biggest GTM challenge you're facing right now?"></textarea></div>
+        <button class="btn btn-orange" style="width:100%;justify-content:center" onclick="handleSubmit(this)">Send Message →</button>
+        <div class="form-success" id="formSuccess">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem">✅</div>
+          <div style="font-weight:700;color:var(--navy)">Message sent!</div>
+          <div style="font-size:0.875rem;color:var(--muted);margin-top:0.25rem">A founder will be in touch within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="background:var(--bg-light);padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow">Before You Reach Out</span>
+      <h2 style="margin-bottom:var(--space-md)">Before You Reach Out</h2>
+      <div class="faq-grid">
+        <div class="faq-card"><div class="faq-q">Who is unwindGTM for?</div><div class="faq-a">Mid-market B2B SaaS companies ($5M–$50M ARR) in Fintech, LegalTech, or adjacent sectors.</div></div>
+        <div class="faq-card"><div class="faq-q">How quickly can you start?</div><div class="faq-a">Health Check within 1–2 weeks of scoping. Retainers within 2–4 weeks.</div></div>
+        <div class="faq-card"><div class="faq-q">Do you work with companies outside India?</div><div class="faq-a">Yes. APAC, US, UK, and Middle East. Our team has operated across all major markets.</div></div>
+        <div class="faq-card"><div class="faq-q">What's the minimum engagement?</div><div class="faq-a">Revenue Audit Call is free. RevOps Health Check is the smallest paid — fixed-fee, 2–3 weeks, no obligation to continue.</div></div>
+        <div class="faq-card"><div class="faq-q">Are there lock-in contracts?</div><div class="faq-a">No. Retainers operate on 30-day notice. No bloated long-term commitments.</div></div>
+        <div class="faq-card"><div class="faq-q">What tools do you work with?</div><div class="faq-a">HubSpot, Salesforce, Marketo, Pardot, Gainsight, ChurnZero, Gong, Chorus, Clay, n8n, Zapier, HeyReach.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <h2 style="color:#fff">The Best Time to Fix Your Revenue Engine Was Last Quarter. The Second Best Time is Now.</h2>
+      <p style="margin-top:0.75rem">Start with a free 30-minute strategy call. No commitment. Just an honest conversation.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a href="mailto:founders@unwindgtm.com" class="btn btn-orange">Book a Free Revenue Audit →</a>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+<script src="../assets/js/nav.js"></script>
+<script>
+function handleSubmit(btn) {
+  btn.disabled = true; btn.textContent = 'Sending...';
+  setTimeout(() => {
+    btn.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }, 1000);
+}
+</script>
+</body>
+</html>
