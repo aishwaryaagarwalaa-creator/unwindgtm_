@@ -1,170 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — Unwind GTM</title>
-  <meta name="description" content="Meet the founders of Unwind GTM — three operators with deep experience in Revenue Operations, Sales, Marketing, and GTM strategy.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — unwindGTM</title>
   <link rel="stylesheet" href="../assets/css/main.css">
   <style>
-    .founder-section {
-      padding: var(--space-lg) 0;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .founder-section:last-of-type { border-bottom: none; }
-    .founder-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: var(--space-lg);
-      align-items: start;
-    }
-    .founder-layout.reverse { direction: rtl; }
-    .founder-layout.reverse > * { direction: ltr; }
-    .founder-photo-wrap {
-      position: sticky;
-      top: calc(var(--nav-height) + 2rem);
-    }
-    .founder-photo {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--color-bg-card) 0%, var(--color-bg-2) 100%);
-      border: 1px solid var(--color-border);
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .founder-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .founder-photo-placeholder {
-      font-family: var(--font-display);
-      font-size: 6rem;
-      color: var(--color-primary-dim);
-      opacity: 0.4;
-    }
-    .founder-photo-badge {
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      right: 1rem;
-      background: rgba(10,10,15,0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-    }
-    .founder-photo-badge-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .founder-photo-badge-role {
-      font-size: 0.7rem;
-      color: var(--color-primary);
-      font-family: var(--font-mono);
-      letter-spacing: 0.05em;
-    }
-    .founder-content {}
-    .founder-name {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.25rem;
-    }
-    .founder-role {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      margin-bottom: var(--space-md);
-    }
-    .founder-bio {
-      font-size: 1rem;
-      color: var(--color-text-muted);
-      line-height: 1.85;
-      margin-bottom: var(--space-md);
-    }
-    .expertise-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: var(--space-md);
-    }
-    .founder-actions {
-      display: flex;
-      gap: var(--space-sm);
-      flex-wrap: wrap;
-    }
-    @media (max-width: 768px) {
-      .founder-layout { grid-template-columns: 1fr; }
-      .founder-layout.reverse { direction: ltr; }
-      .founder-photo-wrap { position: static; }
-      .founder-photo { aspect-ratio: 1; max-width: 220px; }
-    }
+    .founder-section { padding:var(--space-lg) 0; border-bottom:1px solid var(--border); }
+    .founder-layout { display:grid; grid-template-columns:260px 1fr; gap:var(--space-lg); align-items:start; }
+    .founder-layout.reverse { grid-template-columns:1fr 260px; }
+    .founder-layout.reverse .founder-photo-col { order:2; }
+    .founder-layout.reverse .founder-content { order:1; }
+    .founder-photo { width:260px; aspect-ratio:3/4; border-radius:16px; background:linear-gradient(135deg,var(--light-blue),#dbeafe); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:5rem; font-weight:800; color:rgba(26,86,219,0.2); overflow:hidden; position:sticky; top:calc(var(--nav-height) + 2rem); }
+    .founder-photo img { width:100%;height:100%;object-fit:cover; }
+    .founder-role { font-family:var(--font-mono); font-size:11px; color:var(--blue); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem; }
+    .founder-name { font-family:var(--font-display); font-size:clamp(2.5rem,5vw,3.5rem); font-weight:700; color:var(--navy); margin-bottom:1rem; }
+    .founder-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:var(--space-sm); }
+    .founder-bio { font-size:1rem; color:var(--muted); line-height:1.85; margin-bottom:1rem; }
+    .founder-quote { font-style:italic; font-weight:600; color:var(--navy); border-left:3px solid var(--orange); padding-left:1rem; margin:var(--space-sm) 0; font-size:1rem; }
+    .diff-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .diff-card { background:var(--bg-light); border:1px solid var(--border); border-radius:12px; padding:1.5rem; position:relative; overflow:hidden; }
+    .diff-num { font-family:var(--font-display); font-size:3rem; font-weight:800; color:rgba(26,86,219,0.15); line-height:1; margin-bottom:0.5rem; }
+    .diff-text { font-size:0.9rem; color:var(--muted); font-weight:500; }
+    .diff-text strong { color:var(--navy); display:block; margin-bottom:0.25rem; }
+    .principles-list { display:flex; flex-direction:column; gap:1rem; }
+    .principle-item { display:flex; align-items:flex-start; gap:1rem; }
+    .principle-num { width:28px; height:28px; border-radius:50%; background:var(--orange); color:#fff; font-family:var(--font-display); font-weight:700; font-size:0.75rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+    .principle-text strong { display:block; font-size:0.95rem; color:var(--navy); margin-bottom:0.2rem; }
+    .principle-text span { font-size:0.875rem; color:var(--muted); }
+    @media(max-width:768px){ .founder-layout,.founder-layout.reverse{grid-template-columns:1fr} .founder-photo{position:static;aspect-ratio:1;max-width:180px} .diff-grid{grid-template-columns:1fr 1fr} }
   </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <div class="content-layer">
-      <div class="hero section">
-        <p class="hero-eyebrow">// About Us</p>
-        <h1 class="hero-title">Three operators.<br><em>One mission.</em></h1>
-        <p class="hero-subtitle">Unwind GTM was built by revenue operators who've been in the trenches — building GTM functions from scratch, fixing broken systems, and delivering outcomes at scale. We don't advise from the sidelines. We build alongside you.</p>
-      </div>
+<div class="page-wrapper"><div class="content-layer">
 
-      <!-- FOUNDERS — loaded from founders.json -->
-      <div class="section" id="foundersContainer">
-        <p style="color:var(--color-text-muted)">Loading founder profiles...</p>
+  <!-- HERO -->
+  <div class="section" style="padding-top:calc(var(--space-xl) + var(--nav-height))">
+    <span class="eyebrow">About Us</span>
+    <h1>Three Operators.<br><em class="accent">One Revenue Engine.</em></h1>
+    <p class="body-lg" style="max-width:700px;margin-top:1.5rem">unwindGTM was built by revenue operators who've been in the trenches — building GTM functions from scratch, fixing broken systems, and delivering outcomes at scale across B2B SaaS, Fintech, and LegalTech unicorns globally.</p>
+  </div>
+
+  <!-- FOUNDER: DEBASISH -->
+  <div class="section">
+    <div class="founder-section">
+      <div class="founder-layout">
+        <div class="founder-photo-col">
+          <div class="founder-photo"><img src="../assets/images/debasish.jpg" alt="Debasish" onerror="this.parentElement.textContent='D'"></div>
+        </div>
+        <div class="founder-content">
+          <div class="founder-role">Co-Founder · GTM Strategy & RevOps Architecture</div>
+          <div class="founder-name">Debasish</div>
+          <div class="founder-tags">
+            <span class="tag">GTM Architecture</span><span class="tag">CRM & Workflow Automation</span><span class="tag">LLM & AI Applications</span><span class="tag">Revenue Strategy</span><span class="tag">Fintech · LegalTech</span>
+          </div>
+          <p class="founder-bio">Debasish is a high-agency, outcome-driven operator with over a decade of experience architecting global GTM strategies and building revenue operations from the ground up. As a specialist in B2B technology firms across Fintech and LegalTech, he has a proven track record of transforming fragmented business functions into cohesive, high-growth engines.</p>
+          <p class="founder-bio">In the post-AI era, he leads at the cutting edge of integrations, custom development, and agentic workflows — bridging complex technology with practical business impact. He brings a multi-disciplinary lens to the Lead-to-Cash puzzle and specialises in full-funnel strategy and execution.</p>
+          <div class="founder-quote">"I've run the functions you're trying to fix. Not just advised on them."</div>
+          <div class="btn-row">
+            <a href="consult-debasish.html" class="btn btn-orange">Book a Call with Debasish →</a>
+            <a href="#" class="btn btn-outline-blue">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOUNDER: VAIBHAV -->
+    <div class="founder-section">
+      <div class="founder-layout reverse">
+        <div class="founder-photo-col">
+          <div class="founder-photo"><img src="../assets/images/vaibhav.jpg" alt="Vaibhav" onerror="this.parentElement.textContent='V'"></div>
+        </div>
+        <div class="founder-content">
+          <div class="founder-role">Co-Founder · Sales & Marketing Operations</div>
+          <div class="founder-name">Vaibhav</div>
+          <div class="founder-tags">
+            <span class="tag">Sales & Marketing Ops</span><span class="tag">Pipeline Architecture</span><span class="tag">Attribution Modeling</span><span class="tag">Lifecycle Automation</span><span class="tag">AI-native GTM</span>
+          </div>
+          <p class="founder-bio">Vaibhav is a systems-first Sales & Marketing Operations leader with years of hands-on experience turning fragmented GTM infrastructure into clean, scalable revenue engines. Rooted in B2B SaaS, he has built Sales and Marketing Operations functions from the ground up — owning the full stack of People, Process, Data, Enablement, and Systems.</p>
+          <p class="founder-bio">His expertise sits at the intersection of lifecycle orchestration, marketing automation, and data architecture. From designing ICP frameworks to introducing pipeline layers that gave leadership first-time funnel visibility before MQL — Vaibhav has a track record of solving problems that most operators don't even recognise exist until they surface as a broken quarter.</p>
+          <p class="founder-bio">In the post-AI world, Vaibhav has leaned into building AI-native GTM workflows — combining tools like Clay, n8n, Zapier, and HeyReach with LLM-assisted processes to eliminate manual overhead and accelerate execution without adding headcount.</p>
+          <div class="founder-quote" style="font-style:normal"><strong>AI where it scales, deterministic logic where it governs.</strong></div>
+          <div class="btn-row">
+            <a href="consult-vaibhav.html" class="btn btn-orange">Book a Call with Vaibhav →</a>
+            <a href="#" class="btn btn-outline-blue">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOUNDER: AISHWARYA -->
+    <div class="founder-section" style="border-bottom:none">
+      <div class="founder-layout">
+        <div class="founder-photo-col">
+          <div class="founder-photo"><img src="../assets/images/aishwarya.jpg" alt="Aishwarya" onerror="this.parentElement.textContent='A'"></div>
+        </div>
+        <div class="founder-content">
+          <div class="founder-role">Co-Founder · Customer Success & Finance Operations</div>
+          <div class="founder-name">Aishwarya</div>
+          <div class="founder-tags">
+            <span class="tag">CS Operations</span><span class="tag">Quote-to-Cash</span><span class="tag">Financial Planning & Analysis</span><span class="tag">Revenue Recognition</span><span class="tag">Data & Systems</span>
+          </div>
+          <p class="founder-bio">Aishwarya brings a rare combination of Industrial Engineering, Chartered Accountancy, and deep RevOps execution — the kind of multi-disciplinary thinking that most companies desperately need and rarely find in one person.</p>
+          <p class="founder-bio">He specialises in Revenue Operations for B2B Tech and SaaS companies, with hands-on experience setting up and optimising CS, Finance, and Operations functions across multiple unicorns and soon-to-be unicorns globally — both as a full-time leader and as a consultant.</p>
+          <p class="founder-bio">He sits at the intersection of data, systems, engineering, and finance — the four pillars that determine whether a revenue engine can actually scale.</p>
+          <div class="btn-row">
+            <a href="consult-aishwarya.html" class="btn btn-orange">Book a Call with Aishwarya →</a>
+            <a href="#" class="btn btn-outline-blue">LinkedIn ↗</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <script src="../assets/js/nav.js"></script>
-  <script>
-    const CONSULT_LINKS = {
-      debasish: 'consult-debasish.html',
-      vaibhav:  'consult-vaibhav.html',
-      aishwarya:'consult-aishwarya.html'
-    };
+  <!-- WHAT MAKES US DIFFERENT -->
+  <div style="background:var(--bg-light);padding:var(--space-lg) 0;">
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <span class="eyebrow">What Makes Us Different</span>
+      <h2 style="margin-bottom:0.75rem">Operators First. Consultants Never.</h2>
+      <p class="body-lg" style="max-width:600px;margin-bottom:var(--space-md)">We don't hand you a deck and disappear. We embed, execute, and leave you with systems — not dependencies.</p>
+      <div class="diff-grid">
+        <div class="diff-card"><div class="diff-num">01</div><div class="diff-text"><strong>We've run the functions you're trying to fix</strong>Not just advised on them.</div></div>
+        <div class="diff-card"><div class="diff-num">02</div><div class="diff-text"><strong>We cover all 9 modern RevOps pillars</strong>Most agencies stop at 5.</div></div>
+        <div class="diff-card"><div class="diff-num">03</div><div class="diff-text"><strong>Full lifecycle coverage</strong>Marketing → Sales → CS → Delivery → Finance.</div></div>
+        <div class="diff-card"><div class="diff-num">04</div><div class="diff-text"><strong>Sector-deep in B2B SaaS, Fintech & LegalTech</strong>Not generalist consultants.</div></div>
+        <div class="diff-card"><div class="diff-num">05</div><div class="diff-text"><strong>Flexible models, zero lock-ins</strong>No bloated retainers, just outcomes.</div></div>
+        <div class="diff-card"><div class="diff-num">06</div><div class="diff-text"><strong>Built to transfer ownership</strong>Every system documented and handed back.</div></div>
+      </div>
+    </div>
+  </div>
 
-    fetch('../data/founders.json').then(r=>r.json()).then(data=>{
-      const container = document.getElementById('foundersContainer');
-      container.innerHTML = data.founders.map((f, i) => `
-        <div class="founder-section fade-in">
-          <div class="founder-layout ${i%2===1 ? 'reverse' : ''}">
-            <div class="founder-photo-wrap">
-              <div class="founder-photo">
-                <img src="../${f.image}" alt="${f.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                <div class="founder-photo-placeholder" style="display:none">${f.name[0]}</div>
-                <div class="founder-photo-badge">
-                  <div class="founder-photo-badge-name">${f.name}</div>
-                  <div class="founder-photo-badge-role">${f.role} · Unwind GTM</div>
-                </div>
-              </div>
-              ${f.linkedin !== '#' ? `<a href="${f.linkedin}" target="_blank" class="btn btn-ghost" style="width:100%;margin-top:0.75rem;justify-content:center">LinkedIn ↗</a>` : ''}
-            </div>
-            <div class="founder-content">
-              <h2 class="founder-name">${f.name}</h2>
-              <div class="founder-role">${f.role}</div>
-              <p class="founder-bio">${f.bio}</p>
-              <div class="expertise-grid">
-                ${f.expertise.map(e => `<span class="tag">${e}</span>`).join('')}
-              </div>
-              <div class="founder-actions">
-                <a href="${CONSULT_LINKS[f.id]}" class="btn btn-primary">Consult with ${f.name} →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      `).join('');
-    });
-  </script>
+  <!-- OPERATING PRINCIPLES -->
+  <div class="section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-lg);align-items:start">
+      <div>
+        <span class="eyebrow">How We Show Up</span>
+        <h2>How We Show Up for Every Client</h2>
+        <p class="body-md" style="margin-top:1rem">Four principles that govern every engagement we take on — no exceptions.</p>
+      </div>
+      <div class="principles-list">
+        <div class="principle-item"><div class="principle-num">1</div><div class="principle-text"><strong>Customer First — always.</strong><span>Your pain, your pace, your priorities.</span></div></div>
+        <div class="principle-item"><div class="principle-num">2</div><div class="principle-text"><strong>Outcomes over outputs.</strong><span>We measure by pipeline velocity, win rates, and churn.</span></div></div>
+        <div class="principle-item"><div class="principle-num">3</div><div class="principle-text"><strong>Transparent and direct.</strong><span>We tell you what's broken and why, before we tell you what we'll do about it.</span></div></div>
+        <div class="principle-item"><div class="principle-num">4</div><div class="principle-text"><strong>Built to transfer.</strong><span>Every system documented and handed back with full ownership.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <h2 style="color:#fff">Ready to Work With Operators Who've Been There?</h2>
+      <p style="margin-top:0.75rem">Book a free 30-minute call with one of our founders.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a href="work-with-us.html" class="btn btn-orange">Book a Free Strategy Call →</a>
+        <a href="services.html" class="btn btn-outline-white">See Our Offerings</a>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+<script src="../assets/js/nav.js"></script>
 </body>
 </html>
-
