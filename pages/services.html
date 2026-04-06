@@ -1,152 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services — Unwind GTM</title>
-  <meta name="description" content="Revenue Operations services: Fractional RevOps, FP&A, CRM, Marketing Ops, Sales Ops, Customer Success, and Data Analytics.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTM Offerings — unwindGTM</title>
   <link rel="stylesheet" href="../assets/css/main.css">
   <style>
-    .services-list { display: flex; flex-direction: column; gap: 0; }
-    .service-entry {
-      padding: var(--space-lg) 0;
-      border-bottom: 1px solid var(--color-border);
-      display: grid;
-      grid-template-columns: 80px 1fr 320px;
-      gap: var(--space-md);
-      align-items: start;
-      transition: all var(--transition);
-      scroll-margin-top: calc(var(--nav-height) + 2rem);
-    }
-    .service-entry:first-child { padding-top: 0; }
-    .service-entry:last-child { border-bottom: none; }
-    .service-number {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: var(--color-text-subtle);
-      padding-top: 0.5rem;
-    }
-    .service-main {}
-    .service-icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-      line-height: 1;
-    }
-    .service-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.35rem;
-    }
-    .service-tagline {
-      font-size: 1rem;
-      color: var(--color-primary);
-      font-style: italic;
-      margin-bottom: var(--space-sm);
-    }
-    .service-desc {
-      font-size: 0.95rem;
-      color: var(--color-text-muted);
-      line-height: 1.8;
-      max-width: 620px;
-    }
-    .service-outcomes {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 1.5rem;
-    }
-    .service-outcomes-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-    }
-    .service-outcomes ul { list-style: none; }
-    .service-outcomes li {
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
-      padding: 0.4rem 0;
-      border-bottom: 1px solid var(--color-border);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .service-outcomes li:last-child { border-bottom: none; }
-    .service-outcomes li::before {
-      content: '→';
-      color: var(--color-primary);
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-    .services-cta {
-      margin-top: var(--space-lg);
-      text-align: center;
-      padding: var(--space-lg);
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-    }
-    @media (max-width: 900px) {
-      .service-entry { grid-template-columns: 1fr; }
-      .service-number { display: none; }
-    }
+    .offering { display:grid; grid-template-columns:1fr 340px; gap:var(--space-lg); align-items:start; padding:var(--space-lg) 0; border-bottom:1px solid var(--border); }
+    .offering:last-child { border-bottom:none; }
+    .offering.reverse { grid-template-columns:340px 1fr; }
+    .offering.reverse .offering-left { order:2; }
+    .offering.reverse .offering-right { order:1; }
+    .offering-num { font-family:var(--font-mono); font-size:11px; color:var(--blue); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.5rem; }
+    .offering-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0.75rem 0; }
+    .pain-hook { font-size:1.05rem; font-style:italic; color:var(--muted); line-height:1.75; margin:1rem 0; border-left:3px solid var(--light-blue); padding-left:1rem; }
+    .deliverables-box { background:var(--bg-light); border:1px solid var(--border); border-radius:12px; padding:1.5rem; }
+    .deliverables-label { font-family:var(--font-mono); font-size:11px; color:var(--blue); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1rem; }
+    .deliverables-list { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+    .deliverables-list li { font-size:0.875rem; color:var(--muted); display:flex; align-items:flex-start; gap:0.5rem; line-height:1.5; }
+    .deliverables-list li::before { content:'→'; color:var(--blue); flex-shrink:0; font-size:0.8rem; margin-top:1px; }
+    @media(max-width:900px){ .offering,.offering.reverse{grid-template-columns:1fr} .offering.reverse .offering-left,.offering.reverse .offering-right{order:unset} }
   </style>
 </head>
 <body>
-  <div class="page-wrapper">
-    <div class="content-layer">
-      <div class="hero section">
-        <p class="hero-eyebrow">// Services</p>
-        <h1 class="hero-title">Everything your<br><em>revenue engine</em> needs.</h1>
-        <p class="hero-subtitle">From fractional RevOps leadership to full-stack GTM implementation, we cover every layer of the revenue function — with the same rigour and ownership as a full-time hire.</p>
+<div class="page-wrapper"><div class="content-layer">
+
+  <!-- HERO -->
+  <div class="section" style="padding-top:calc(var(--space-xl) + var(--nav-height))">
+    <span class="eyebrow">GTM Offerings</span>
+    <h1>Your Revenue Engine Has a Leak.<br>We Help You Find It — and <em class="accent">Fix It.</em></h1>
+    <p class="body-lg" style="max-width:640px;margin-top:1.5rem">Growing companies don't stall because of bad products or bad people. They stall because the systems connecting Marketing, Sales, CS, and Delivery are broken. That's what we fix.</p>
+    <p class="body-md" style="max-width:600px;margin-top:1rem">Our GTM Offerings span the entire revenue lifecycle — from the first lead to the last renewal. Choose a focused engagement or let us run the full engine.</p>
+    <div class="btn-row">
+      <a href="work-with-us.html" class="btn btn-orange">Get a Free Revenue Audit →</a>
+      <a href="work-with-us.html" class="btn btn-outline-blue">Start with the Health Check</a>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <!-- OFFERING 01 -->
+    <div class="offering" id="revenue-strategy">
+      <div class="offering-left">
+        <div class="offering-num">01 / Revenue Strategy</div>
+        <h2>Revenue Strategy & Advisory</h2>
+        <div class="offering-tags"><span class="tag">GTM Motion</span><span class="tag">ICP Refinement</span><span class="tag">Annual Planning</span></div>
+        <div class="pain-hook">You're scaling fast but planning in quarters, not years. Most mid-market companies don't have a shared revenue north star. Marketing plans around MQLs, Sales around quotas, and CS around NPS. Nobody's aligned on what actually drives sustainable ARR — and it costs you deals, renewals, and predictability.</div>
       </div>
-
-      <div class="section">
-        <div class="services-list" id="servicesList">
-          <p style="color:var(--color-text-muted)">Loading services...</p>
+      <div class="offering-right">
+        <div class="deliverables-box">
+          <div class="deliverables-label">What We Deliver</div>
+          <ul class="deliverables-list">
+            <li>End-to-end revenue strategy — from GTM motion and ICP refinement to territory planning and compensation design</li>
+            <li>3-year revenue operating plans that hold up at board level</li>
+            <li>RevOps Maturity Assessment (5-level model) with roadmap and prioritized quick wins</li>
+            <li>Full Go-to-Market Strategy & Alignment Workshops</li>
+            <li>Annual Revenue Planning & Forecasting Framework Build</li>
+            <li>Cross-functional KPI & Target Setting (unified metrics across all teams)</li>
+            <li>ICP refinement, segmentation, and scoring</li>
+          </ul>
         </div>
+      </div>
+    </div>
 
-        <div class="services-cta">
-          <h3 style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:0.75rem">Not sure which service fits?</h3>
-          <p style="color:var(--color-text-muted);margin-bottom:var(--space-sm)">Book a free GTM audit with one of our founders. We'll help you diagnose the problem before we prescribe a solution.</p>
-          <a href="consultation.html" class="btn btn-primary">Book a Free Consultation</a>
+    <!-- OFFERING 02 -->
+    <div class="offering reverse" id="marketing-ops">
+      <div class="offering-left">
+        <div class="offering-num">02 / Marketing Operations</div>
+        <h2>Marketing Operations</h2>
+        <div class="offering-tags"><span class="tag">Lifecycle Orchestration</span><span class="tag">Attribution</span><span class="tag">Automation</span></div>
+        <div class="pain-hook">Your marketing is generating activity. Just not pipeline. You've got a CRM, a MAP, and a content calendar. But leads are falling through the cracks, attribution is a mess, and the Sales team is blaming Marketing for low quality.</div>
+      </div>
+      <div class="offering-right">
+        <div class="deliverables-box">
+          <div class="deliverables-label">What We Deliver</div>
+          <ul class="deliverables-list">
+            <li>MAP implementation and optimization (HubSpot, Marketo, Pardot)</li>
+            <li>Lead lifecycle design — from first touch to MQL to SQL with clear SLAs</li>
+            <li>Multi-touch attribution modeling (first touch, last touch, linear, W-shaped)</li>
+            <li>Campaign operations framework — from planning to reporting</li>
+            <li>Database hygiene, enrichment, and segmentation infrastructure</li>
+            <li>Marketing-Sales SLA design and implementation</li>
+            <li>ABM infrastructure build</li>
+            <li>Marketing reporting and dashboard design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFERING 03 -->
+    <div class="offering" id="sales-ops">
+      <div class="offering-left">
+        <div class="offering-num">03 / Sales Operations</div>
+        <h2>Sales Operations</h2>
+        <div class="offering-tags"><span class="tag">Pipeline Architecture</span><span class="tag">Forecasting</span><span class="tag">CRM Hygiene</span></div>
+        <div class="pain-hook">Your pipeline looks healthy. Your forecast is a lie. When your CRM is dirty and your sales process is inconsistent, forecasting is just educated guesswork. Deals slip. Quarters miss.</div>
+      </div>
+      <div class="offering-right">
+        <div class="deliverables-box">
+          <div class="deliverables-label">What We Deliver</div>
+          <ul class="deliverables-list">
+            <li>CRM architecture, hygiene, and optimization (Salesforce, HubSpot CRM)</li>
+            <li>Sales process design — stage definitions, exit criteria, and playbooks</li>
+            <li>Pipeline management framework with weekly/monthly/quarterly cadences</li>
+            <li>Forecasting model design and implementation (bottoms-up and AI-assisted)</li>
+            <li>Territory design, quota setting, and compensation plan modeling</li>
+            <li>Win/loss analysis framework and post-deal review process</li>
+            <li>Sales reporting and dashboard design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFERING 04 -->
+    <div class="offering reverse" id="cs-ops">
+      <div class="offering-left">
+        <div class="offering-num">04 / Customer Success Operations</div>
+        <h2>CS Operations</h2>
+        <div class="offering-tags"><span class="tag">Health Scoring</span><span class="tag">QBRs</span><span class="tag">Expansion Playbooks</span></div>
+        <div class="pain-hook">Your best customers are at risk and you don't know it yet. Without a proper health scoring model, proactive playbooks, and a clean CS-to-Sales handoff, you're managing churn reactively.</div>
+      </div>
+      <div class="offering-right">
+        <div class="deliverables-box">
+          <div class="deliverables-label">What We Deliver</div>
+          <ul class="deliverables-list">
+            <li>Customer Health Scoring model design and implementation</li>
+            <li>Onboarding journey design — from contract signed to first value moment</li>
+            <li>QBR framework design (templates, cadence, talking points, success metrics)</li>
+            <li>Expansion and upsell playbook development</li>
+            <li>Churn prediction model and early warning system</li>
+            <li>CS-to-Sales handoff playbook for expansion revenue</li>
+            <li>CS reporting infrastructure (GRR, NRR, health score trends)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFERING 05 -->
+    <div class="offering" id="delivery-ops">
+      <div class="offering-left">
+        <div class="offering-num">05 / Delivery Operations</div>
+        <h2>Delivery & Implementation Ops</h2>
+        <div class="offering-tags"><span class="tag">Implementation</span><span class="tag">Project Delivery</span><span class="tag">Capacity Planning</span></div>
+        <div class="pain-hook">Sales is closing deals your delivery team can't actually deliver on time. When Sales and Delivery aren't aligned on scoping, capacity, and timelines — customers get overpromised.</div>
+      </div>
+      <div class="offering-right">
+        <div class="deliverables-box">
+          <div class="deliverables-label">What We Deliver</div>
+          <ul class="deliverables-list">
+            <li>Sales-to-Delivery handoff process design with clear SLAs and scoping frameworks</li>
+            <li>Project delivery workflow and milestone framework design</li>
+            <li>Capacity planning model for implementation teams</li>
+            <li>Implementation methodology design (phased rollout, milestone tracking)</li>
+            <li>Delivery reporting infrastructure (time-to-go-live, scope creep, margin by project)</li>
+            <li>Escalation frameworks and risk management playbooks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFERING 06 -->
+    <div class="offering reverse" id="finance-ops">
+      <div class="offering-left">
+        <div class="offering-num">06 / Finance & Revenue Operations</div>
+        <h2>Finance & Revenue Ops</h2>
+        <div class="offering-tags"><span class="tag">Quote-to-Cash</span><span class="tag">Revenue Recognition</span><span class="tag">FP&A Integration</span></div>
+        <div class="pain-hook">Your Quote-to-Cash process is leaking revenue before it even hits the bank. Quoting errors, billing delays, recognition gaps — these aren't just Finance problems. They're Revenue Operations problems.</div>
+      </div>
+      <div class="offering-right">
+        <div class="deliverables-box">
+          <div class="deliverables-label">What We Deliver</div>
+          <ul class="deliverables-list">
+            <li>Quote-to-Cash process mapping and gap analysis</li>
+            <li>CPQ implementation and optimization</li>
+            <li>Billing and subscription management infrastructure</li>
+            <li>Revenue recognition policy design and system configuration</li>
+            <li>FP&A integration — connecting GTM metrics to financial models</li>
+            <li>Annual planning support: top-down and bottoms-up reconciliation</li>
+            <li>Finance-RevOps reporting bridge (ARR, MRR, churn, expansion by cohort)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFFERING 07 -->
+    <div class="offering" id="enablement">
+      <div class="offering-left">
+        <div class="offering-num">07 / Enablement</div>
+        <h2>Revenue Enablement</h2>
+        <div class="offering-tags"><span class="tag">Playbooks</span><span class="tag">Training</span><span class="tag">Tool Adoption</span></div>
+        <div class="pain-hook">Your team has the tools. They just don't know how to use them — or why. Technology without adoption is just expensive shelf-ware.</div>
+      </div>
+      <div class="offering-right">
+        <div class="deliverables-box">
+          <div class="deliverables-label">What We Deliver</div>
+          <ul class="deliverables-list">
+            <li>Sales playbook design and documentation (discovery, objection handling, competitive positioning)</li>
+            <li>Onboarding programs for new reps — from day 1 to quota-carrying</li>
+            <li>CRM adoption programs — training, governance, and ongoing reinforcement</li>
+            <li>Tool and platform rollout programs (HubSpot, Salesforce, Gainsight, Gong)</li>
+            <li>Enablement content library design and management framework</li>
+            <li>Performance coaching frameworks for frontline managers</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="../assets/js/nav.js"></script>
-  <script>
-    fetch('../data/services.json').then(r=>r.json()).then(data=>{
-      document.getElementById('servicesList').innerHTML = data.services.map((s, i) => `
-        <div class="service-entry fade-in" id="${s.id}">
-          <div class="service-number">0${i+1}</div>
-          <div class="service-main">
-            <div class="service-icon">${s.icon}</div>
-            <h2 class="service-title">${s.title}</h2>
-            <p class="service-tagline">${s.tagline}</p>
-            <p class="service-desc">${s.description}</p>
-          </div>
-          <div class="service-outcomes">
-            <div class="service-outcomes-label">Key Outcomes</div>
-            <ul>${s.outcomes.map(o=>`<li>${o}</li>`).join('')}</ul>
-          </div>
-        </div>
-      `).join('');
+  <!-- FOOTER CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <h2 style="color:#fff">Not Sure Where to Start?</h2>
+      <p style="margin-top:0.75rem">Start with the Revenue Health Check. We'll assess your GTM stack across all 9 pillars and give you a clear view of where to focus first.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a href="work-with-us.html" class="btn btn-orange">Start with the Health Check →</a>
+        <a href="work-with-us.html" class="btn btn-outline-white">Book a Free Strategy Call</a>
+      </div>
+    </div>
+  </div>
 
-      // Scroll to anchor if in URL
-      if (window.location.hash) {
-        setTimeout(() => {
-          const el = document.querySelector(window.location.hash);
-          if (el) el.scrollIntoView({behavior:'smooth'});
-        }, 300);
-      }
-    });
-  </script>
+</div></div>
+<script src="../assets/js/nav.js"></script>
 </body>
 </html>
