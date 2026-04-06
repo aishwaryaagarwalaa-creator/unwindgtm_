@@ -70,72 +70,70 @@
     }
     .orbit-ring-1 { width: 200px; height: 200px; }
     .orbit-ring-2 { width: 320px; height: 320px; }
-    /* Tool nodes */
+    /* Tool nodes — all start at centre, transform moves them outward */
     .tool-node {
       position: absolute;
-      width: 56px; height: 56px;
-      border-radius: 14px;
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      top: 50%; left: 50%;
+      width: 64px; height: 64px;
+      margin-top: -32px; margin-left: -32px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.09);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 3px;
-      font-size: 0.55rem;
-      font-weight: 600;
-      color: var(--color-text-muted);
-      letter-spacing: 0.04em;
+      font-size: 0.52rem;
+      font-weight: 700;
+      color: #6B7280;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      transition: all 0.3s ease;
       cursor: default;
-    }
-    .tool-node:hover {
-      transform: scale(1.15) !important;
-      border-color: var(--color-primary);
-      box-shadow: 0 8px 24px rgba(37,99,235,0.15);
-      color: var(--color-primary);
-      z-index: 20;
+      will-change: transform;
     }
     .tool-node img {
-      width: 28px; height: 28px;
+      width: 30px; height: 30px;
       object-fit: contain;
     }
-    /* Orbit 1 — inner ring, 4 tools */
-    .tool-node.n1 { animation: orbit1 18s linear infinite; }
-    .tool-node.n2 { animation: orbit1 18s linear infinite; animation-delay: -4.5s; }
-    .tool-node.n3 { animation: orbit1 18s linear infinite; animation-delay: -9s; }
-    .tool-node.n4 { animation: orbit1 18s linear infinite; animation-delay: -13.5s; }
-    /* Orbit 2 — outer ring, 5 tools */
-    .tool-node.n5  { animation: orbit2 28s linear infinite; }
-    .tool-node.n6  { animation: orbit2 28s linear infinite; animation-delay: -5.6s; }
-    .tool-node.n7  { animation: orbit2 28s linear infinite; animation-delay: -11.2s; }
-    .tool-node.n8  { animation: orbit2 28s linear infinite; animation-delay: -16.8s; }
-    .tool-node.n9  { animation: orbit2 28s linear infinite; animation-delay: -22.4s; }
+    /* Inner orbit — 4 tools, radius 110px, 20s */
+    .n1 { animation: orbitA 20s linear infinite; }
+    .n2 { animation: orbitA 20s linear infinite; animation-delay: -5s; }
+    .n3 { animation: orbitA 20s linear infinite; animation-delay: -10s; }
+    .n4 { animation: orbitA 20s linear infinite; animation-delay: -15s; }
+    /* Outer orbit — 5 tools, radius 175px, 32s */
+    .n5 { animation: orbitB 32s linear infinite; }
+    .n6 { animation: orbitB 32s linear infinite; animation-delay: -6.4s; }
+    .n7 { animation: orbitB 32s linear infinite; animation-delay: -12.8s; }
+    .n8 { animation: orbitB 32s linear infinite; animation-delay: -19.2s; }
+    .n9 { animation: orbitB 32s linear infinite; animation-delay: -25.6s; }
 
-    @keyframes orbit1 {
-      from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+    @keyframes orbitA {
+      0%   { transform: rotate(0deg)   translateX(110px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
     }
-    @keyframes orbit2 {
-      from { transform: rotate(0deg) translateX(160px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(160px) rotate(-360deg); }
+    @keyframes orbitB {
+      0%   { transform: rotate(0deg)   translateX(175px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(175px) rotate(-360deg); }
     }
 
-    /* Connecting lines pulse */
+    /* Pulse rings emanating from hub */
     .orbit-pulse {
       position: absolute;
       top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px; height: 20px;
+      width: 80px; height: 80px;
+      margin-top: -40px; margin-left: -40px;
       border-radius: 50%;
-      background: rgba(37,99,235,0.12);
-      animation: pulse 2.5s ease-out infinite;
+      border: 1.5px solid rgba(37,99,235,0.25);
+      animation: pulseRing 3s ease-out infinite;
+      pointer-events: none;
     }
-    @keyframes pulse {
-      0%   { width: 80px; height: 80px; opacity: 0.5; }
-      100% { width: 380px; height: 380px; opacity: 0; }
+    .orbit-pulse:nth-child(2) { animation-delay: -1s; }
+    .orbit-pulse:nth-child(3) { animation-delay: -2s; }
+    @keyframes pulseRing {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      100% { transform: scale(4.5); opacity: 0; }
     }
 
     /* ===== STAT STRIP ===== */
@@ -288,6 +286,8 @@
         <div class="hero-visual">
           <div class="tools-orbit">
             <!-- Pulse rings -->
+            <div class="orbit-pulse"></div>
+            <div class="orbit-pulse"></div>
             <div class="orbit-pulse"></div>
             <!-- Orbit rings -->
             <div class="orbit-ring orbit-ring-1"></div>
